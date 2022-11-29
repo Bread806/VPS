@@ -8,11 +8,12 @@ public class spawn_Sword1 : MonoBehaviour
     //public GameObject camera;
     public GameObject Sword1Prefab_Normal;
     int level = 0;
+    int damage = 5;//暫定
     // Start is called before the first frame update
     static float player_sword_distance = 1f;
     public GameObject[] s1_Type = new GameObject [7];
-    Vector3[] s1_Position = {new Vector3(0f,0f,player_sword_distance), new Vector3(player_sword_distance,0f,player_sword_distance), new Vector3(player_sword_distance,0f,0f), new Vector3(player_sword_distance,0f,-player_sword_distance),
-                             new Vector3(0f,0f,-player_sword_distance), new Vector3(-player_sword_distance,0f,-player_sword_distance), new Vector3(-player_sword_distance,0f,0f), new Vector3(-player_sword_distance,0f,player_sword_distance)};
+    Vector3[] s1_Position = {new Vector3(0f,0.5f,player_sword_distance), new Vector3(player_sword_distance,0.5f,player_sword_distance), new Vector3(player_sword_distance,0.5f,0f), new Vector3(player_sword_distance,0.5f,-player_sword_distance),
+                             new Vector3(0f,0.5f,-player_sword_distance), new Vector3(-player_sword_distance,0.5f,-player_sword_distance), new Vector3(-player_sword_distance,0.5f,0f), new Vector3(-player_sword_distance,0.5f,player_sword_distance)};
     Quaternion[] s1_Quaternion = {Quaternion.Euler(90f,0f,0f), Quaternion.Euler(90f,45f,0f), Quaternion.Euler(90f,90f,0f), Quaternion.Euler(90f,135f,0f), 
                                   Quaternion.Euler(90f,180f,0f), Quaternion.Euler(90f,225f,0f), Quaternion.Euler(90f,270f,0f), Quaternion.Euler(90f,315f,0f)};
     Coroutine U_R_D_L,RU_RD_LU_LD,all_direction;
@@ -31,13 +32,6 @@ public class spawn_Sword1 : MonoBehaviour
             yield return new WaitForSeconds(end_time);
         }
     }
-    void Start()
-    {       
-        U_R_D_L = StartCoroutine(sword1_spawn(0,2,0,6));
-        RU_RD_LU_LD = StartCoroutine(sword1_spawn(1,2,2,6));
-        all_direction = StartCoroutine(sword1_spawn(0,1,4,6));
-        StartCoroutine(spawn());
-    }
     IEnumerator spawn(){
         yield return new WaitUntil( () => level == 8);
         StopCoroutine(U_R_D_L);
@@ -47,6 +41,14 @@ public class spawn_Sword1 : MonoBehaviour
         StartCoroutine(sword1_spawn(1,2,1,3));
         StartCoroutine(sword1_spawn(0,1,2,3));
     }
+    void Start()
+    {       
+        /*U_R_D_L = StartCoroutine(sword1_spawn(0,2,0,6));
+        RU_RD_LU_LD = StartCoroutine(sword1_spawn(1,2,2,6));
+        all_direction = StartCoroutine(sword1_spawn(0,1,4,6));
+        StartCoroutine(spawn());*/
+    }
+    
     void Update()
     {
         if(Input.GetKeyDown("space") && level<8){
