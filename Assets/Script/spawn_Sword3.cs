@@ -48,7 +48,7 @@ public class spawn_Sword3 : MonoBehaviour
     {
         if(Input.GetKeyDown("space") && level<8){
             level+=1;
-            Debug.Log(level);
+            //Debug.Log(level);
         }
         transform.position = player.transform.position + offset;
     }

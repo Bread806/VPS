@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4067165956667676}
   - component: {fileID: 33970427774946286}
   - component: {fileID: 23017130780084498}
-  - component: {fileID: -6680514847070807444}
+  - component: {fileID: 868821875513353733}
   m_Layer: 0
   m_Name: Shuriken3
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-6680514847070807444
+--- !u!114 &868821875513353733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

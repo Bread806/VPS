@@ -70,7 +70,7 @@ public class spawn_Sword2 : MonoBehaviour
     {
         if(Input.GetKeyDown("space") && level<9){
             level+=1;
-            //Debug.Log(level);
+            Debug.Log(level);
         }
     }
 }
