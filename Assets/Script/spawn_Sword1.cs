@@ -24,9 +24,9 @@ public class spawn_Sword1 : MonoBehaviour
         while(true){
             for(int i=type;i<8;i+=add){
                 if(i<level)
-                    Instantiate(s1_Type[i], s1_Position[i], s1_Quaternion[i]);
+                    Instantiate(s1_Type[i], player.transform.position+s1_Position[i], s1_Quaternion[i]);
                 else
-                    Instantiate(Sword1Prefab_Normal, s1_Position[i], s1_Quaternion[i]);
+                    Instantiate(Sword1Prefab_Normal, player.transform.position+s1_Position[i], s1_Quaternion[i]);
             }
             
             yield return new WaitForSeconds(end_time);

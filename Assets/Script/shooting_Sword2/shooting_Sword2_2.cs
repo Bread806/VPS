@@ -10,7 +10,7 @@ public class shooting_Sword2_2 : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
