@@ -5,11 +5,9 @@ using UnityEngine;
 public class spawn_Sword1 : MonoBehaviour
 {
     public GameObject player;
-    //public GameObject camera;
     public GameObject Sword1Prefab_Normal;
     int level = 0;
     int damage = 5;//暫定
-    // Start is called before the first frame update
     static float player_sword_distance = 1f;
     public GameObject[] s1_Type = new GameObject [7];
     Vector3[] s1_Position = {new Vector3(0f,0.5f,player_sword_distance), new Vector3(player_sword_distance,0.5f,player_sword_distance), new Vector3(player_sword_distance,0.5f,0f), new Vector3(player_sword_distance,0.5f,-player_sword_distance),

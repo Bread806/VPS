@@ -5,7 +5,6 @@ using UnityEngine;
 public class spawn_Sword2 : MonoBehaviour
 {
     public GameObject player;
-    //public GameObject camera;
     public GameObject Sword2Prefab;
     int level = 0;
     int damage = 1;//暫定
@@ -70,7 +69,7 @@ public class spawn_Sword2 : MonoBehaviour
     {
         if(Input.GetKeyDown("space") && level<9){
             level+=1;
-            Debug.Log(level);
+            //Debug.Log(level);
         }
     }
 }

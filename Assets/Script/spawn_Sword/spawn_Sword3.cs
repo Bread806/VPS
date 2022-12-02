@@ -5,7 +5,6 @@ using UnityEngine;
 public class spawn_Sword3 : MonoBehaviour
 {
     public GameObject player;
-    //public GameObject camera;
     public GameObject Sword3Prefab;
     public GameObject Sword3Prefab_R_L;
     public GameObject Sword3Prefab_All;
@@ -38,9 +37,9 @@ public class spawn_Sword3 : MonoBehaviour
     }
     void Start()
     {    
-        Sw3 =  Instantiate(Sword3Prefab, this.transform) as GameObject;
+        /*Sw3 =  Instantiate(Sword3Prefab, this.transform) as GameObject;
         offset = this.transform.position - player.transform.position;
-        StartCoroutine(level_skill());
+        StartCoroutine(level_skill());*/
         
     }
     
