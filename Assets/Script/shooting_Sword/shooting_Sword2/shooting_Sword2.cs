@@ -20,6 +20,6 @@ public class shooting_Sword2 : MonoBehaviour
         sword2_speed+=0.1f;
         Debug.Log(duration);
         if(sword2_speed >= duration)
-            Destroy (this.gameObject,1);
+            DestroyImmediate(this.gameObject,true);
     }
 }
