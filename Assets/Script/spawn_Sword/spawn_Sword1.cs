@@ -30,7 +30,7 @@ public class spawn_Sword1 : MonoBehaviour
             yield return new WaitForSeconds(end_time);
         }
     }
-    IEnumerator spawn(){
+    IEnumerator level_skill(){
         yield return new WaitUntil( () => level == 8);
         StopCoroutine(U_R_D_L);
         StopCoroutine(RU_RD_LU_LD);
@@ -44,7 +44,7 @@ public class spawn_Sword1 : MonoBehaviour
         /*U_R_D_L = StartCoroutine(sword1_spawn(0,2,0,6));
         RU_RD_LU_LD = StartCoroutine(sword1_spawn(1,2,2,6));
         all_direction = StartCoroutine(sword1_spawn(0,1,4,6));
-        StartCoroutine(spawn());*/
+        StartCoroutine(level_skill());*/
     }
     
     void Update()

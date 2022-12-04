@@ -20,11 +20,11 @@ public class spawn_enemy : MonoBehaviour
         yield return new WaitForSeconds(spawn_time);
         for(int i=0;i<spawn_quantity;i++){  //上方生成敵人
             GameObject nb = Instantiate(enemyPrefab) as GameObject;
-            nb.transform.position = new Vector3(Random.Range(cameraX+(-15f), cameraX+15f), 0.5f, Random.Range(cameraZ+10f, cameraZ+15f));
+            nb.transform.position = new Vector3(Random.Range(cameraX+(-15f), cameraX+15f), 0.5f, Random.Range(cameraZ+35f, cameraZ+30f));
         }
         for(int i=0;i<spawn_quantity;i++){  //下方生成敵人
             GameObject nb = Instantiate(enemyPrefab) as GameObject;
-            nb.transform.position = new Vector3(Random.Range(cameraX+(-15f),cameraX+15f), 0.5f, Random.Range(cameraZ+(-15f), cameraZ+(-10f)));
+            nb.transform.position = new Vector3(Random.Range(cameraX+(-15f),cameraX+15f), 0.5f, Random.Range(cameraZ+(0f), cameraZ+(-5f)));
         }
     }
     // Start is called before the first frame update

@@ -98,15 +98,15 @@ public class spawn_Sword4 : MonoBehaviour
     }
     void Start()
     {
-        sword4_during5 = StartCoroutine(sword4_spawn(Sword4Prefab[0],5));
-        StartCoroutine(level_skill());
+        /*sword4_during5 = StartCoroutine(sword4_spawn(Sword4Prefab[0],5));
+        StartCoroutine(level_skill());*/
     }
 
     void Update()
     {
         if(Input.GetKeyDown("space") && level<9){
             level+=1;
-            Debug.Log(level);
+            //Debug.Log(level);
         }
     }
 }
