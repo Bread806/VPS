@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3481311924989709517}
   - component: {fileID: 3473723987368492615}
   - component: {fileID: 3463855535177271373}
-  - component: {fileID: -6179932702716490046}
+  - component: {fileID: 7835081880299712606}
   m_Layer: 0
   m_Name: dagger (4)
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-6179932702716490046
+--- !u!114 &7835081880299712606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

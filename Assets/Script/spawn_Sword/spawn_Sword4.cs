@@ -36,7 +36,7 @@ public class spawn_Sword4 : MonoBehaviour
         yield return new WaitUntil( () => level == 2);                                  //間格時間變短
         StopCoroutine(sword4_during4);
         sword4_during3 = StartCoroutine(sword4_spawn(Sword4Prefab[0],3));
-        yield return new WaitUntil( () => level == 3);                                  //多一群群炸彈
+        yield return new WaitUntil( () => level == 3);                                  //多一群炸彈
         StopCoroutine(sword4_during3);
         sword4_during3 = StartCoroutine(sword4_spawn(Sword4Prefab[0],3));
         sword4_during3_1 = StartCoroutine(sword4_spawn(Sword4Prefab[1],3));
@@ -46,7 +46,7 @@ public class spawn_Sword4 : MonoBehaviour
         sword4_during3 = StartCoroutine(sword4_spawn(Sword4Prefab[0],3));
         sword4_during3_1 = StartCoroutine(sword4_spawn(Sword4Prefab[1],3));
         sword4_big_during3 = StartCoroutine(sword4_big_spawn(Sword4Prefab_big[0],3));
-        yield return new WaitUntil( () => level == 5);                                  //多一群群炸彈
+        yield return new WaitUntil( () => level == 5);                                  //多一群炸彈
         StopCoroutine(sword4_during3);
         StopCoroutine(sword4_during3_1);
         StopCoroutine(sword4_big_during3);
@@ -98,15 +98,15 @@ public class spawn_Sword4 : MonoBehaviour
     }
     void Start()
     {
-        /*sword4_during5 = StartCoroutine(sword4_spawn(Sword4Prefab[0],5));
-        StartCoroutine(level_skill());*/
+        sword4_during5 = StartCoroutine(sword4_spawn(Sword4Prefab[0],5));
+        StartCoroutine(level_skill());
     }
 
     void Update()
     {
         if(Input.GetKeyDown("space") && level<9){
             level+=1;
-            //Debug.Log(level);
+            Debug.Log(level);
         }
     }
 }

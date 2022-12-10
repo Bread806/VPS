@@ -37,9 +37,9 @@ public class spawn_Sword3 : MonoBehaviour
     }
     void Start()
     {    
-        /*Sw3 =  Instantiate(Sword3Prefab, this.transform) as GameObject;
+        Sw3 =  Instantiate(Sword3Prefab, this.transform) as GameObject;
         offset = this.transform.position - player.transform.position;
-        StartCoroutine(level_skill());*/
+        StartCoroutine(level_skill());
         
     }
     
@@ -47,7 +47,7 @@ public class spawn_Sword3 : MonoBehaviour
     {
         if(Input.GetKeyDown("space") && level<8){
             level+=1;
-            //Debug.Log(level);
+            Debug.Log(level);
         }
         transform.position = player.transform.position + offset;
     }
