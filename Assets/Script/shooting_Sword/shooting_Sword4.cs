@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class shooting_Sword4 : MonoBehaviour
 {
+    WaitForSeconds WaitForS;
     IEnumerator Destroy_Sword4(){
-        yield return new WaitForSeconds(5);
+        yield return WaitForS;
         Destroy (this.gameObject,1);
+    }
+    void Awake() {
+        WaitForS = new WaitForSeconds(5);
     }
     void Start()
     {

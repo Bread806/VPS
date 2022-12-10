@@ -11,29 +11,41 @@ public class spawn_Sword3 : MonoBehaviour
     GameObject Sw3,Sw3_R_L;
     int level = 0;
     int damage = 1;//暫定
+    int target_level = 1;
     Vector3 sword3_scale;
     private Vector3 offset;
+    WaitUntil wait_level;
 
     IEnumerator level_skill(){
         sword3_scale = Sw3.transform.localScale;
-        yield return new WaitUntil( () => level == 1);
+        yield return wait_level;
         damage += 1;
-        yield return new WaitUntil( () => level == 2);
+        target_level += 1;
+        yield return wait_level;
         damage += 1;
-        yield return new WaitUntil( () => level == 3);                                  //範圍變大
+        target_level += 1;
+        yield return wait_level;                                                        //範圍變大
         Sw3.transform.localScale = new Vector3(6f,  6f, 0);
-        yield return new WaitUntil( () => level == 4);
+        target_level += 1;
+        yield return wait_level;
         damage += 1;
-        yield return new WaitUntil( () => level == 5);
+        target_level += 1;
+        yield return wait_level;
         damage += 1;
-        yield return new WaitUntil( () => level == 6);                                  //範圍變大
+        target_level += 1;
+        yield return wait_level;                                                        //範圍變大
         Sw3.transform.localScale = new Vector3(8f,  8f, 0);
-        yield return new WaitUntil( () => level == 7);                                  //多兩顆小球在旁邊轉
+        target_level += 1;
+        yield return wait_level;                                                        //多兩顆小球在旁邊轉
         Sw3_R_L = Instantiate(Sword3Prefab_R_L, this.transform);
-        yield return new WaitUntil( () => level == 8);                                  //多四顆小球在旁邊轉
+        target_level += 1;
+        yield return wait_level;                                                        //多四顆小球在旁邊轉
         DestroyImmediate(Sw3_R_L,true);
         damage += 5;
         Instantiate(Sword3Prefab_All, this.transform);
+    }
+    void Awake(){
+        wait_level = new WaitUntil( () => level == target_level);
     }
     void Start()
     {    
