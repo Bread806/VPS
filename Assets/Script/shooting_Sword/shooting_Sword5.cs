@@ -38,8 +38,7 @@ public class shooting_Sword5 : MonoBehaviour
             yield return null;
         }
     }
-    void Start()
-    {
+    void Awake(){
         sum_distance = 0;
         sum_distance2 = 0;
         sum_rotate = new Vector3(0,0,0);
@@ -47,6 +46,9 @@ public class shooting_Sword5 : MonoBehaviour
         sword5_speed2 = 100;
         sword5_rotate_speed = 1800;
         random_rotate = Random.Range(35,360);
+    }
+    void Start()
+    {
         StartCoroutine(change_speed());
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class shooting_Sword6 : MonoBehaviour
 {
-    float sword6_speed = 30;
+    public float sword6_speed = 30;
     // Start is called before the first frame update
     void Start()
     {
