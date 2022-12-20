@@ -5,17 +5,27 @@ using UnityEngine;
 public class shooting_Sword6 : MonoBehaviour
 {
     public float sword6_speed = 30;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    WaitForSeconds WaitForS;
+    public spawn_Sword6 scriptSword6;
+
+    IEnumerator Destroy_Sword5(){
+        yield return WaitForS;
+        gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
+    void Awake() {
+        WaitForS = new WaitForSeconds(1);
+    }
+
+    void OnEnable()
+    {
+        if(scriptSword6 != null && scriptSword6.newSpeed)
+            sword6_speed = 60;
+        StartCoroutine(Destroy_Sword5());
+    }
+
     void Update()
     {
-        transform.Translate(0,0,-sword6_speed*Time.deltaTime);
-        if(this.transform.position.x >= 30)
-            DestroyImmediate(this.gameObject,true);
+        transform.Translate(0,0,-sword6_speed*Time.deltaTime);           
     }
 }

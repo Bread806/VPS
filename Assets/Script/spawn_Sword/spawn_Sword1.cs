@@ -26,9 +26,9 @@ public class spawn_Sword1 : MonoBehaviour
         while(true){
             for(int i=type;i<8;i+=add){
                 if(i<level)
-                    Instantiate(s1_Type[i], player.transform.position+s1_Position[i], s1_Quaternion[i]);
+                    PoolManager.Release(s1_Type[i], player.transform.position+s1_Position[i], s1_Quaternion[i]);
                 else
-                    Instantiate(Sword1Prefab_Normal, player.transform.position+s1_Position[i], s1_Quaternion[i]);
+                    PoolManager.Release(Sword1Prefab_Normal, player.transform.position+s1_Position[i], s1_Quaternion[i]);
             }
             
             yield return waitForEnd_time;

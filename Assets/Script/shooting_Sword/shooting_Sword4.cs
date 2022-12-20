@@ -7,19 +7,14 @@ public class shooting_Sword4 : MonoBehaviour
     WaitForSeconds WaitForS;
     IEnumerator Destroy_Sword4(){
         yield return WaitForS;
-        Destroy (this.gameObject,1);
+        gameObject.SetActive(false);
     }
     void Awake() {
-        WaitForS = new WaitForSeconds(5);
+        WaitForS = new WaitForSeconds(3);
     }
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(Destroy_Sword4());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-            
-    }
 }

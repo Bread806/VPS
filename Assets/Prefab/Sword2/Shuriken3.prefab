@@ -96,5 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe5eb843b80aec4a82a877111fe45e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 110
-  scale_big: 0
+  newDuration: 0
+  newScale_big: 0
+  newSword2: {fileID: 1406397516143562}

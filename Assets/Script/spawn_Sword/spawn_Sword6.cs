@@ -16,22 +16,24 @@ public class spawn_Sword6 : MonoBehaviour
     float direction = 1;
     float spawn_time = 0.2f;
     float during_time = 3f;
+    public bool newSpeed = false;
     WaitForSeconds WaitForSpawn_time, WaitForDuring_time;
     WaitUntil wait_level;
 
     IEnumerator sword6_spawn(){
         while(true){
-            if(180f<player.transform.eulerAngles.y && player.transform.eulerAngles.y<360f){
-                direction = -1;
-                sword6_rotate = 90f;
-            }
-            if(0f<player.transform.eulerAngles.y && player.transform.eulerAngles.y<180f){
-                direction = 1;
-                sword6_rotate = 270f;
-            }
             sword6_count = (level+1) > 5 ? 5 : level+1;
             for(int i=0;i<sword6_count;i++){
-                Instantiate(s6_Type[i], new Vector3(player.transform.position.x+player_sword_distance*direction,0.5f,player.transform.position.z+0.6f*u_or_d),Quaternion.Euler(0f,sword6_rotate,0f));
+                if(180f<player.transform.eulerAngles.y && player.transform.eulerAngles.y<360f){
+                    direction = -1;
+                    sword6_rotate = 90f;
+                }
+                if(0f<player.transform.eulerAngles.y && player.transform.eulerAngles.y<180f){
+                    direction = 1;
+                    sword6_rotate = 270f;
+                }
+                
+                PoolManager.Release(s6_Type[i], new Vector3(player.transform.position.x+player_sword_distance*direction,0.5f,player.transform.position.z+0.6f*u_or_d),Quaternion.Euler(0f,sword6_rotate,0f)).GetComponent<shooting_Sword6>().scriptSword6 = this;
                 u_or_d *= -1;
                 yield return WaitForSpawn_time;
             }   
@@ -57,16 +59,13 @@ public class spawn_Sword6 : MonoBehaviour
         /*yield return new WaitUntil( () => playspeed.level == 8);
         spawn_time = 0.1f;
         WaitForSpawn_time = new WaitForSeconds(spawn_time);
-        for(int i=0;i<5;i++)
-            s6_Type[i].GetComponent<shooting_Sword6>().sword6_speed = 60;
-        */
+        newSpeed = true;*/
+        
     }
     void Awake(){
         wait_level = new WaitUntil( () => level == target_level);
         WaitForSpawn_time = new WaitForSeconds(spawn_time);
         WaitForDuring_time = new WaitForSeconds(during_time);
-        for(int i=0;i<5;i++)
-            s6_Type[i].GetComponent<shooting_Sword6>().sword6_speed = 30;
     }
     void Start()
     {

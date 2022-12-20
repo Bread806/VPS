@@ -21,7 +21,7 @@ public class spawn_Sword4 : MonoBehaviour
             float x = Random.value < 0.5f ? -1f : 1f;
             float z = Random.value < 0.5f ? -1f : 1f;
             for(int i=0;i<10;i++)
-                Instantiate(s4_Type, new Vector3(player.transform.position.x+Random.Range(3f, 6f)*x,10f,player.transform.position.z+Random.Range(3f, 6f)*z),Quaternion.Euler(Random.Range(0f, 360f),Random.Range(0f, 360f),Random.Range(0f, 360f)));            
+                PoolManager.Release(s4_Type, new Vector3(player.transform.position.x+Random.Range(3f, 6f)*x,10f,player.transform.position.z+Random.Range(3f, 6f)*z),Quaternion.Euler(Random.Range(0f, 360f),Random.Range(0f, 360f),Random.Range(0f, 360f)));            
             yield return waitForDuring_time;
         }
     }
@@ -29,7 +29,7 @@ public class spawn_Sword4 : MonoBehaviour
         while(true){
             float x = Random.value < 0.5f ? -1f : 1f;
             float z = Random.value < 0.5f ? -1f : 1f;
-            Instantiate(s4_Type, new Vector3(player.transform.position.x+Random.Range(3f, 6f)*x,10f,player.transform.position.z+Random.Range(3f, 6f)*z),Quaternion.Euler(Random.Range(0f, 360f),Random.Range(0f, 360f),Random.Range(0f, 360f)));            
+            PoolManager.Release(s4_Type, new Vector3(player.transform.position.x+Random.Range(3f, 6f)*x,10f,player.transform.position.z+Random.Range(3f, 6f)*z),Quaternion.Euler(Random.Range(0f, 360f),Random.Range(0f, 360f),Random.Range(0f, 360f)));            
             yield return waitForDuring_time;
         }
     }
