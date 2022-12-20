@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-    //public GameObject[] weapon; 
-    public GameObject weapon;
+    public GameObject weapon; 
+    public GameObject backpack;
+    public GameObject weaponBackground;
+    public GameObject playerInterface;
+    //public GameObject weapon;
     private int playerHP;
     private int playerEXP;
     // Start is called before the first frame update
@@ -27,11 +30,25 @@ public class PlayerState : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.K)){
             level_UP();
         }
-        print (weapon.GetComponent<spawn_Sword1>().level);
+       // print (weapon.GetComponent<spawn_Sword1>().level);
     }
 
     void level_UP(){
+        backpack.SetActive(true);
+        playerInterface.SetActive(false);
+        weaponBackground.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    void on_click_level_UP(){
+        //current weapon
+        if (!weapon.active){
+            weapon.SetActive(true);
+        }
         weapon.GetComponent<spawn_Sword1>().level += 1;
+        backpack.SetActive(false);
+        playerInterface.SetActive(true);
+        weaponBackground.SetActive(false);
     }
 
 }

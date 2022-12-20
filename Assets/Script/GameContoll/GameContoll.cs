@@ -6,7 +6,7 @@ public class GameContoll : MonoBehaviour
 {
     public GameObject backpack;
     public GameObject playerInterface;
-    public GameObject player;
+    //public spawn_
     public bool gameIsPause;
     // Start is called before the first frame update
     void Start()
@@ -17,27 +17,39 @@ public class GameContoll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape)){
-            if (gameIsPause){
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (gameIsPause)
+            {
                 resume();
             }
-            else{
+            else
+            {
                 pause();
             }
-        }   
 
-    }
+            if (Input.GetKeyUp(KeyCode.T))
+            {
+                //player.
 
-    void pause(){
-        backpack.SetActive(true);
-        playerInterface.SetActive(false);
-        Time.timeScale = 0f;
-        gameIsPause = true;
-    }
-    void resume(){
-        backpack.SetActive(false);
-        playerInterface.SetActive(true);
-        Time.timeScale = 1f;
-        gameIsPause = false;
+            }
+
+
+        }
+
+        void pause()
+        {
+            backpack.SetActive(true);
+            playerInterface.SetActive(false);
+            Time.timeScale = 0f;
+            gameIsPause = true;
+        }
+        void resume()
+        {
+            backpack.SetActive(false);
+            playerInterface.SetActive(true);
+            Time.timeScale = 1f;
+            gameIsPause = false;
+        }
     }
 }
