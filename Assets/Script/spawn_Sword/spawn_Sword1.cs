@@ -6,7 +6,7 @@ public class spawn_Sword1 : MonoBehaviour
 {
     public GameObject player;
     public GameObject Sword1Prefab_Normal;
-    int level = 0;
+    public int level = 0;
     int damage = 5;//暫定
     int start_time;
     int end_time;
