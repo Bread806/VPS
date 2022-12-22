@@ -9,7 +9,7 @@ public class spawn_Sword3 : MonoBehaviour
     public GameObject Sword3Prefab_R_L;
     public GameObject Sword3Prefab_All;
     GameObject Sw3,Sw3_R_L;
-    int level = 0;
+    public int level = 0;
     int damage = 1;//暫定
     int target_level = 1;
     Vector3 sword3_scale;
