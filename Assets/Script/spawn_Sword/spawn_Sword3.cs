@@ -49,7 +49,7 @@ public class spawn_Sword3 : MonoBehaviour
     }
     void Start()
     {    
-        Sw3 =  Instantiate(Sword3Prefab, this.transform) as GameObject;
+        Sw3 = Instantiate(Sword3Prefab, this.transform) as GameObject;
         offset = this.transform.position - player.transform.position;
         StartCoroutine(level_skill());
         

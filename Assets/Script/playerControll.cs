@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test : MonoBehaviour
+public class playerControll : MonoBehaviour
 {
-    public float movementSpeed = 3;
+    public float movementSpeed = 5;
     Animator anim;
     Rigidbody rb;
     
