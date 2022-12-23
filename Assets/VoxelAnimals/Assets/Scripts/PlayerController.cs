@@ -48,4 +48,9 @@ public class PlayerController : MonoBehaviour
                 anim.SetTrigger("jump");
         }
     }
+    void OnTriggerStay(Collider other) {
+        if (other.name == "Cat") {
+            // Destroy (other.gameObject);
+        }
+    }
 }

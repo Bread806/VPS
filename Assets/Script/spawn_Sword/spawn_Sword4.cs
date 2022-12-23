@@ -7,7 +7,7 @@ public class spawn_Sword4 : MonoBehaviour
     public GameObject player;
     public GameObject[] Sword4Prefab = new GameObject [3];
     public GameObject[] Sword4Prefab_big = new GameObject [3];
-    int level = 0;
+    public int level = 0;
     int damage = 1;//暫定
     int damage1 = 3;//暫定
     int target_level = 1;
