@@ -1,27 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class test : MonoBehaviour
+
+public class PlayerControl : MonoBehaviour
 {
     public float movementSpeed = 3;
-    public float jumpForce = 300;
     public float timeBeforeNextJump = 1.2f;
     private float canJump = 0f;
+    private int exp;
+    public TextMeshProUGUI countText;
     Animator anim;
     Rigidbody rb;
     
     void Start()
     {
-        //anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        exp = 0;
     }
 
     void Update()
     {
         ControllPlayer();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("exptest"))
+        {
+            exp += 1;
+            other.gameObject.SetActive(false);
+        }
+        Debug.Log(exp);
+    }
     void ControllPlayer()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -37,10 +48,5 @@ public class test : MonoBehaviour
 
         transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
 
-        /*if (Input.GetButtonDown("Jump") && Time.time > canJump)
-        {
-                rb.AddForce(0, jumpForce, 0);
-                canJump = Time.time + timeBeforeNextJump;
-        }*/
     }
 }
