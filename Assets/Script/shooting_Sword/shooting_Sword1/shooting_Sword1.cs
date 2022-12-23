@@ -6,6 +6,14 @@ public class shooting_Sword1 : MonoBehaviour
 {
     [SerializeField] float sword1_speed = 15;
     float sum = 0f;
+    int damage = 5;//暫定
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Player"))
+        {
+            //other.gameObject.Hp -= damage;
+        }
+    }
     void Update()
     {
         transform.Translate(0,sword1_speed*Time.deltaTime,0);
