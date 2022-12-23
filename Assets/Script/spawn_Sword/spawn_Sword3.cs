@@ -8,7 +8,7 @@ public class spawn_Sword3 : MonoBehaviour
     public GameObject Sword3Prefab;
     public GameObject Sword3Prefab_R_L;
     public GameObject Sword3Prefab_All;
-    GameObject Sw3,Sw3_R_L;
+    GameObject Sw3,Sw3_R_L,Sw3_all;
     public int level = 0;
     int damage = 1;//暫定
     int target_level = 1;
@@ -37,20 +37,24 @@ public class spawn_Sword3 : MonoBehaviour
         Sw3.transform.localScale = new Vector3(8f,  8f, 0);
         target_level += 1;
         yield return wait_level;                                                        //多兩顆小球在旁邊轉
-        Sw3_R_L = Instantiate(Sword3Prefab_R_L, this.transform);
+        Sw3_R_L.SetActive(true);
         target_level += 1;
         yield return wait_level;                                                        //多四顆小球在旁邊轉
-        DestroyImmediate(Sw3_R_L,true);
+        Sw3_R_L.SetActive(false);
         damage += 5;
-        Instantiate(Sword3Prefab_All, this.transform);
+        Sw3_all.SetActive(true);
     }
     void Awake(){
         wait_level = new WaitUntil( () => level == target_level);
     }
     void Start()
     {    
-        Sw3 = Instantiate(Sword3Prefab, this.transform) as GameObject;
-        offset = this.transform.position - player.transform.position;
+        Sw3 = Instantiate(Sword3Prefab, player.transform.position, Quaternion.Euler(0f,0f,0f)) as GameObject;
+        Sw3_R_L = Instantiate(Sword3Prefab_R_L, player.transform.position, Quaternion.Euler(0f,0f,0f));
+        Sw3_all = Instantiate(Sword3Prefab_All, player.transform.position, Quaternion.Euler(0f,0f,0f));
+        Sw3_R_L.SetActive(false);
+        Sw3_all.SetActive(false);
+        offset = Sw3.transform.position - player.transform.position;
         StartCoroutine(level_skill());
         
     }
@@ -61,6 +65,8 @@ public class spawn_Sword3 : MonoBehaviour
             level+=1;
             Debug.Log(level);
         }
-        transform.position = player.transform.position + offset;
+        Sw3.transform.position = player.transform.position + offset;
+        Sw3_R_L.transform.position = player.transform.position + offset;
+        Sw3_all.transform.position = player.transform.position + offset;
     }
 }
