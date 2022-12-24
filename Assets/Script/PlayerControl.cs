@@ -7,10 +7,7 @@ using TMPro;
 public class PlayerControl : MonoBehaviour
 {
     public float movementSpeed = 3;
-    public float timeBeforeNextJump = 1.2f;
-    private float canJump = 0f;
     private int exp;
-    public TextMeshProUGUI countText;
     Animator anim;
     Rigidbody rb;
     
@@ -29,9 +26,9 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.CompareTag("exptest"))
         {
             exp += 1;
+            Debug.Log(exp);
             other.gameObject.SetActive(false);
-        }
-        Debug.Log(exp);
+        }    
     }
     void ControllPlayer()
     {

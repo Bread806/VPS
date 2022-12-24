@@ -7,7 +7,7 @@ public class spawn_Sword2 : MonoBehaviour
     public GameObject player;
     public GameObject Sword2Prefab;
     public int level = 0;
-    int damage = 1;//暫定
+    public int damage = 1;//暫定
     int during_time = 5;
     public int target_level = 1;
     static float player_sword_distance = 3f;
@@ -22,7 +22,7 @@ public class spawn_Sword2 : MonoBehaviour
         while(true){
             float x = Random.value < 0.5f ? -1f : 1f;
             float z = Random.value < 0.5f ? -1f : 1f;
-            PoolManager.Release(Sword2Prefab, new Vector3(player.transform.position.x+player_sword_distance*x,0.5f,player.transform.position.z+player_sword_distance*z), Quaternion.Euler(0f,Random.Range(0f, 360f),0f)).GetComponent<shooting_Sword2>().scriptSword2 = this;
+            PoolManager.Release(Sword2Prefab, new Vector3(player.transform.position.x+player_sword_distance*x,0.5f,player.transform.position.z+player_sword_distance*z), Quaternion.Euler(0f,Random.Range(0f, 360f),0f)).GetComponent<shooting_Sword2>().scriptSword2 = this;;
             yield return waitForDuring_time;
         }
     }
@@ -58,8 +58,6 @@ public class spawn_Sword2 : MonoBehaviour
         StartCoroutine(sword2_spawn());
         StartCoroutine(sword2_spawn());
         target_level += 1;
-        Debug.Log(level);
-        Debug.Log(target_level);
         yield return wait_level;                                                        //越外圍飛鏢越大
         newScale_big = true;
     }
@@ -68,6 +66,10 @@ public class spawn_Sword2 : MonoBehaviour
         wait_level = new WaitUntil( () => level == target_level);
     }
     void Start() {
+        for(int i=0;i<7;i++){
+            PoolManager.Release(Sword2Prefab, this.transform.position).GetComponent<shooting_Sword2>().scriptSword2 = this;
+            Sword2Prefab.SetActive(false);
+        }
         start_sword2_0 = StartCoroutine(sword2_spawn());
         StartCoroutine(level_skill());
     }

@@ -9,9 +9,10 @@ public class shooting_Sword1 : MonoBehaviour
     int damage = 5;//暫定
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("enemy"))
         {
-            //other.gameObject.Hp -= damage;
+            //other.gameObject.GetComponent<xxx>().Hp -= damage;
+            //Debug.Log(other.gameObject);
         }
     }
     void Update()
