@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour {
+public class EnemyAction : MonoBehaviour {
     // 跟隨的player
     public GameObject player;
     private NavMeshAgent agent;
     private Animator animator;
     // Start is called before the first frame update
     void Start() {
+        player = GameObject.Find ("player");
         agent = this.GetComponent<NavMeshAgent>();
         animator = this.GetComponent<Animator>();
     }

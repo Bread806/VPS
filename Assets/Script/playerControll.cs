@@ -34,4 +34,11 @@ public class playerControll : MonoBehaviour
         transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
 
     }
+    void OnTriggerStay(Collider other) {
+        Debug.Log (other.gameObject);
+        if (other.tag == "enemy") {
+            Destroy (other.gameObject);
+            GameObject.Find ("EnemySpawner").GetComponent<SpawnEnemy>().EnemyDie();
+        }
+    }
 }
