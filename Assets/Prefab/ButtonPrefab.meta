@@ -1,9 +1,6 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Ds material/ConeCollider.meta
+HEAD:Assets/Ds material/ConeCollider.meta
 guid: 970c348ad45097947b792e683cfb561e
-========
-guid: b1665fb19cc87a94c873429902a639e8
->>>>>>>> 15e88f234a7ed9312785d5715fe8cbdf8f9c986c:Assets/Prefab/ButtonPrefab.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,24 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class test : MonoBehaviour
+
+public class PlayerControl : MonoBehaviour
 {
     public float movementSpeed = 3;
+    private int exp;
     Animator anim;
     Rigidbody rb;
     
     void Start()
     {
-        //anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        exp = 0;
     }
 
     void Update()
     {
         ControllPlayer();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("exptest"))
+        {
+            exp += 1;
+            Debug.Log(exp);
+            other.gameObject.SetActive(false);
+        }    
+    }
     void ControllPlayer()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -31,7 +42,15 @@ public class test : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
         }
 
+
         transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
 
+    }
+    void OnTriggerStay(Collider other) {
+        Debug.Log (other.gameObject);
+        if (other.tag == "enemy") {
+            Destroy (other.gameObject);
+            GameObject.Find ("EnemySpawner").GetComponent<SpawnEnemy>().EnemyDie();
+        }
     }
 }
