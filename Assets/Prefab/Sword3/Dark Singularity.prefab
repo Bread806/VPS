@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1535756534693798852}
   - component: {fileID: 1701870399645993170}
   - component: {fileID: 1701153452104307828}
+  - component: {fileID: -3225278488729291756}
   m_Layer: 0
   m_Name: Dark Singularity
   m_TagString: Untagged
@@ -4830,6 +4831,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-3225278488729291756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538102051281877180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16d78ac9488ac348b0b85111459c337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  scriptSword3: {fileID: 0}
 --- !u!1 &1538198692609426262
 GameObject:
   m_ObjectHideFlags: 0

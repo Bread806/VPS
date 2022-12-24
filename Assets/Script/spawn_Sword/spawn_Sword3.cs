@@ -10,7 +10,7 @@ public class spawn_Sword3 : MonoBehaviour
     public GameObject Sword3Prefab_All;
     GameObject Sw3,Sw3_R_L,Sw3_all;
     public int level = 0;
-    int damage = 1;//暫定
+    public int damage = 1;//暫定
     int target_level = 1;
     Vector3 sword3_scale;
     private Vector3 offset;
@@ -52,6 +52,9 @@ public class spawn_Sword3 : MonoBehaviour
         Sw3 = Instantiate(Sword3Prefab, player.transform.position, Quaternion.Euler(0f,0f,0f)) as GameObject;
         Sw3_R_L = Instantiate(Sword3Prefab_R_L, player.transform.position, Quaternion.Euler(0f,0f,0f));
         Sw3_all = Instantiate(Sword3Prefab_All, player.transform.position, Quaternion.Euler(0f,0f,0f));
+        Sw3.GetComponent<Hp_Sword3>().scriptSword3 = this;
+        Sw3_R_L.GetComponent<shooting_Sword3>().scriptSword3 = this;
+        Sw3_all.GetComponent<shooting_Sword3>().scriptSword3 = this;
         Sw3_R_L.SetActive(false);
         Sw3_all.SetActive(false);
         offset = Sw3.transform.position - player.transform.position;

@@ -7,7 +7,6 @@ public class spawn_Sword6 : MonoBehaviour
     public GameObject player;
     public GameObject[] s6_Type = new GameObject [5];
     public int level = 0;
-    int damage = 3;//暫定
     int target_level = 5;
     static float player_sword_distance = 3.5f;
     float u_or_d = 1f;

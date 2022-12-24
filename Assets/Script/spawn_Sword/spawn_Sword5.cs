@@ -8,8 +8,6 @@ public class spawn_Sword5 : MonoBehaviour
     public GameObject Sword5Prefab;
     public GameObject Sword5Prefab_1;
     public int level = 0;
-    int damage = 3;//暫定
-    int damage2 = 5;//暫定
     int target_level = 1;
     int during_time = 4;
     static float player_sword_distance = 3.5f;
