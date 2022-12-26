@@ -9,20 +9,38 @@ public class GameContoll : MonoBehaviour
 
     public GameObject backpack;         //背包
     public GameObject playerInterface;  //遊戲中玩家狀態
-    public GameObject weaponBackground; //升級武器被警
+    public GameObject weaponBackground; //升級武器背景
     public GameObject[] weaponList = new GameObject [6];    //六個武器欄位
-    public TMP_Text item1,item2,item3;
-    public Button btn1, btn2, btn3;
+    public TMP_Text[] itemText = new TMP_Text [3];
+    //public TMP_Text item1,item2,item3;
+    public Button[] buttonList = new Button [3];
     public bool gameIsPause;
     int currentItemNumber1 = 0;int currentItemNumber2 = 0;int currentItemNumber3 = 0;
     // Start is called before the first frame update
+
+    void Awake(){
+        for (int i=0;i<buttonList.Length;i++){
+            buttonList[i] = GetComponent<Button>();
+            itemText[i] = GetComponent<TMP_Text>();
+        }
+    }
     void Start()
     {
         gameIsPause = false;
-        btn1.onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber1);});
-        btn2.onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber2);});
-        btn3.onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber3);});
         
+        backpack = GameObject.Find("Backpack");
+        playerInterface = GameObject.Find("PlayInterface");
+        weaponBackground = GameObject.Find("WeaponBackground");
+        weaponList = GameObject.FindGameObjectsWithTag("Sword");
+        for (int i=1; i<=buttonList.Length; i++){
+           buttonList[i-1] = GameObject.Find("ItemButton" + i.ToString()).GetComponent<Button>();
+           buttonList[i-1].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber1);});
+           itemText[i-1]   = GameObject.Find("ItemText" + i.ToString()).GetComponent<TMP_Text>();
+           
+        }
+        //btn1.onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber1);});
+        //btn2.onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber2);});
+        //btn3.onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber3);});
     }
 
     // Update is called once per frame
@@ -86,9 +104,12 @@ public class GameContoll : MonoBehaviour
         currentItemNumber1 =  Random.Range(0,6);
         currentItemNumber2 =  Random.Range(0,6);
         currentItemNumber3 =  Random.Range(0,6);
-        item1.text = "Sword " + (currentItemNumber1+1).ToString();
-        item2.text = "Sword " + (currentItemNumber2+1).ToString();
-        item3.text = "Sword " + (currentItemNumber3+1).ToString();
+        for (int i=0; i<itemText.Length;i++){
+            itemText[i].text = "Sword " + (currentItemNumber1+1).ToString();
+        }
+        // item1.text = "Sword " + (currentItemNumber1+1).ToString();
+        // item2.text = "Sword " + (currentItemNumber2+1).ToString();
+        // item3.text = "Sword " + (currentItemNumber3+1).ToString();
         
         
         backpack.SetActive(true);
