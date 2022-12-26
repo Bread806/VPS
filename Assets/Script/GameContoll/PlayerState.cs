@@ -5,11 +5,10 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     //public GameObject weapon; 
-    public GameObject GS;
-    public GameObject backpack;
-    public GameObject weaponBackground;
-    public GameObject playerInterface;
-    //public GameObject weapon;
+    private GameObject GS;
+    private GameObject backpack;
+    private GameObject weaponBackground;
+    private GameObject playerInterface;
     private int playerHP;
     private int playerEXP;
     // Start is called before the first frame update
@@ -17,12 +16,10 @@ public class PlayerState : MonoBehaviour
     {
         playerHP = 100;
         playerEXP = 0;
-        //weapon.GetComponent<spawn_Sword1>();
-        //weapon = new GameObject[6];
-        //weapon = GameObject.FindGameObjectsWithTag("Sword");
-        //for (int i = 0; i < weapon.Length; i++){
-        //    //print (weapon[i].level);
-        //}
+        GS = GameObject.Find("GameControll");
+        backpack = GameObject.Find("Backpack");
+        playerInterface = GameObject.Find("PlayInterface");
+        weaponBackground = GameObject.Find("WeaponBackground");
     }
 
     // Update is called once per frame
@@ -31,26 +28,8 @@ public class PlayerState : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.K)){
             GS.GetComponent<GameContoll>().LV_UP();
         }
-       // print (weapon.GetComponent<spawn_Sword1>().level);
     }
 
-    // void level_UP(){
-    //     backpack.SetActive(true);
-    //     playerInterface.SetActive(false);
-    //     weaponBackground.SetActive(true);
-    //     Time.timeScale = 0f;
-    // }
-
-    // public void on_click_level_UP(){
-    //     //current weapon
-    //     if (!weapon.active){
-    //         weapon.SetActive(true);
-    //     }
-    //     weapon.GetComponent<spawn_Sword1>().level += 1;
-    //     backpack.SetActive(false);
-    //     playerInterface.SetActive(true);
-    //     weaponBackground.SetActive(false);
-    //     Time.timeScale = 1f;
-    // }
+    
 
 }

@@ -15,7 +15,7 @@ public class GameContoll : MonoBehaviour
     private TMP_Text[] itemText = new TMP_Text [3];
     private Button[] buttonList = new Button [3];
     private bool gameIsPause;
-    int currentItemNumber1 = 0;int currentItemNumber2 = 0;int currentItemNumber3 = 0;
+    private int[] currentItemNumber = new int [3];
     // Start is called before the first frame update
 
     void Awake(){
@@ -34,11 +34,14 @@ public class GameContoll : MonoBehaviour
         weaponList = GameObject.FindGameObjectsWithTag("Sword");
         buttonBackround = GameObject.Find("ButtonBackground");
         for (int i=1; i<=buttonList.Length; i++){
-           buttonList[i-1] = GameObject.Find("ItemButton" + i.ToString()).GetComponent<Button>();
-           buttonList[i-1].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber1);});
-           itemText[i-1]   = GameObject.Find("ItemText" + i.ToString()).GetComponent<TMP_Text>();
+            currentItemNumber[i-1] = 0;
+            buttonList[i-1] = GameObject.Find("ItemButton" + i.ToString()).GetComponent<Button>(); 
+            itemText[i-1]   = GameObject.Find("ItemText" + i.ToString()).GetComponent<TMP_Text>();
            
         }
+        buttonList[0].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[0]);});
+        buttonList[1].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[1]);});
+        buttonList[2].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[2]);});
 
         // init hierarchy
         backpack.SetActive(false);
@@ -97,16 +100,11 @@ public class GameContoll : MonoBehaviour
     }
 
     public void LV_UP(){
-        
-        currentItemNumber1 =  Random.Range(0,6);
-        currentItemNumber2 =  Random.Range(0,6);
-        currentItemNumber3 =  Random.Range(0,6);
         for (int i=0; i<itemText.Length;i++){
-            itemText[i].text = "Sword " + (currentItemNumber1+1).ToString();
+            currentItemNumber[i] = Random.Range(0,6);
+            itemText[i].text = "Sword " + (currentItemNumber[i]+1).ToString();
         }
 
-        
-        
         backpack.SetActive(true);
         playerInterface.SetActive(false);
         weaponBackground.SetActive(true); //要選定好武器了
@@ -141,8 +139,7 @@ public class GameContoll : MonoBehaviour
                 weaponList[n].GetComponent<spawn_Sword6>().level++;
                 break;
         }
-        print ("Sword" + n.ToString() +"  active.");
-
+        print ("Sword" + n.ToString() +"  LV up.");
     }
     
 }

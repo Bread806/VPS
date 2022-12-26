@@ -47,7 +47,7 @@ public class PlayerControl : MonoBehaviour
 
     }
     void OnTriggerStay(Collider other) {
-        Debug.Log (other.gameObject);
+//        Debug.Log (other.gameObject);
         if (other.tag == "enemy") {
             Destroy (other.gameObject);
             GameObject.Find ("EnemySpawner").GetComponent<SpawnEnemy>().EnemyDie();
