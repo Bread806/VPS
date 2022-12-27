@@ -8,6 +8,7 @@ public class GameContoll : MonoBehaviour
 {
 
     private GameObject backpack;         //背包
+    private float currentTime;           //遊戲時間
     private GameObject playerInterface;  //遊戲中玩家狀態
     private GameObject weaponBackground; //升級武器背景
     private GameObject buttonBackround;
@@ -19,6 +20,7 @@ public class GameContoll : MonoBehaviour
     // Start is called before the first frame update
 
     void Awake(){
+        //string = interfacearr[weaponList[i].level]
         for (int i=0;i<buttonList.Length;i++){
             buttonList[i] = GetComponent<Button>();
             itemText[i] = GetComponent<TMP_Text>();
@@ -28,25 +30,12 @@ public class GameContoll : MonoBehaviour
     {
         // init variable
         gameIsPause = false;
-        backpack = GameObject.Find("Backpack");
-        playerInterface = GameObject.Find("PlayInterface");
-        weaponBackground = GameObject.Find("WeaponBackground");
-        weaponList = GameObject.FindGameObjectsWithTag("Sword");
-        buttonBackround = GameObject.Find("ButtonBackground");
-        for (int i=1; i<=buttonList.Length; i++){
-            currentItemNumber[i-1] = 0;
-            buttonList[i-1] = GameObject.Find("ItemButton" + i.ToString()).GetComponent<Button>(); 
-            itemText[i-1]   = GameObject.Find("ItemText" + i.ToString()).GetComponent<TMP_Text>();
-           
-        }
-        buttonList[0].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[0]);});
-        buttonList[1].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[1]);});
-        buttonList[2].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[2]);});
-
+        currentTime = 0f;
+        init_gameobj();
+        init_button_listener();
+        
         // init hierarchy
-        backpack.SetActive(false);
-        weaponBackground.SetActive(false);
-        buttonBackround.SetActive(false);
+        init_hierarchy();
     }
 
     // Update is called once per frame
@@ -62,8 +51,10 @@ public class GameContoll : MonoBehaviour
             {
                 pause();
             }
-
         }
+
+        currentTime += Time.deltaTime; 
+        print (currentTime);
     }
     
     void pause()
@@ -93,15 +84,12 @@ public class GameContoll : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void count(int n){
-        //n++;
-        print (n);
 
-    }
 
     public void LV_UP(){
         for (int i=0; i<itemText.Length;i++){
             currentItemNumber[i] = Random.Range(0,6);
+            //itemText[i].text = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>.list[]
             itemText[i].text = "Sword " + (currentItemNumber[i]+1).ToString();
         }
 
@@ -110,6 +98,35 @@ public class GameContoll : MonoBehaviour
         weaponBackground.SetActive(true); //要選定好武器了
         buttonBackround.SetActive(false);
         Time.timeScale = 0f;
+    }
+
+    public float current_time(){
+        return currentTime;
+    }
+
+    private void init_gameobj(){
+        backpack = GameObject.Find("Backpack");
+        playerInterface = GameObject.Find("PlayInterface");
+        weaponBackground = GameObject.Find("WeaponBackground");
+        weaponList = GameObject.FindGameObjectsWithTag("Sword");
+        buttonBackround = GameObject.Find("ButtonBackground");
+        for (int i=1; i<=buttonList.Length; i++){
+            currentItemNumber[i-1] = 0;
+            buttonList[i-1] = GameObject.Find("ItemButton" + i.ToString()).GetComponent<Button>(); 
+            itemText[i-1]   = GameObject.Find("ItemText" + i.ToString()).GetComponent<TMP_Text>();      
+        }
+    }
+
+    private void init_button_listener(){
+        buttonList[0].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[0]);});
+        buttonList[1].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[1]);});
+        buttonList[2].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[2]);});
+    }
+
+    private void init_hierarchy(){
+        backpack.SetActive(false);
+        weaponBackground.SetActive(false);
+        buttonBackround.SetActive(false);
     }
 
     private void active_weapon_and_LV_UP(int n){
