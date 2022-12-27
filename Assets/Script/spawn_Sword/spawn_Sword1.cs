@@ -5,6 +5,7 @@ using UnityEngine;
 public class spawn_Sword1 : MonoBehaviour
 {
     public GameObject player;
+    private string[] swordDescribe = new string [8];   //by bread
     public GameObject Sword1Prefab_Normal;
     public int level = 0;
     int start_time;
@@ -50,6 +51,16 @@ public class spawn_Sword1 : MonoBehaviour
         StartCoroutine(sword1_spawn(1,2,waitForStart_time1,waitForEnd_time0));
         StartCoroutine(sword1_spawn(0,1,waitForStart_time2,waitForEnd_time0));
     }
+
+    public string sword_describe(int num){
+        return swordDescribe[num];
+    }
+
+    // private void sword_describe_init(){
+    //     swordDescribe[0] = "開啟"
+    // }
+
+
     void Awake()
     {
         end_time = 6;
@@ -62,6 +73,7 @@ public class spawn_Sword1 : MonoBehaviour
         waitForStart_time2 = new WaitForSeconds(start_time); 
     }
     void Start(){
+        //sword_describe_init();
         U_R_D_L = StartCoroutine(sword1_spawn(0,2,waitForStart_time0,waitForEnd_time0));
         RU_RD_LU_LD = StartCoroutine(sword1_spawn(1,2,waitForStart_time1,waitForEnd_time0));
         all_direction = StartCoroutine(sword1_spawn(0,1,waitForStart_time2,waitForEnd_time0));
@@ -73,5 +85,5 @@ public class spawn_Sword1 : MonoBehaviour
             level+=1;
             Debug.Log(level);
         }
-    }
+    } 
 }
