@@ -11,6 +11,7 @@ public class spawn_Sword4 : MonoBehaviour
     int target_level = 1;
     int during_time = 5;
     public bool damage1Change = false;
+    static float sword4High = 10f;
     Coroutine sword4_0, sword4_1, sword4_2, sword4_big_0, sword4_big_1, sword4_big_2;
     WaitUntil wait_level;
     WaitForSeconds waitForDuring_time;
@@ -20,7 +21,7 @@ public class spawn_Sword4 : MonoBehaviour
             float x = Random.value < 0.5f ? -1f : 1f;
             float z = Random.value < 0.5f ? -1f : 1f;
             for(int i=0;i<10;i++)
-                PoolManager.Release(s4_Type, new Vector3(player.transform.position.x+Random.Range(3f, 6f)*x,10f,player.transform.position.z+Random.Range(3f, 6f)*z),Quaternion.Euler(Random.Range(0f, 360f),Random.Range(0f, 360f),Random.Range(0f, 360f)));
+                PoolManager.Release(s4_Type, new Vector3(player.transform.position.x+Random.Range(3f, 6f)*x,player.transform.position.y + sword4High,player.transform.position.z+Random.Range(3f, 6f)*z),Quaternion.Euler(Random.Range(0f, 360f),Random.Range(0f, 360f),Random.Range(0f, 360f)));
             yield return waitForDuring_time;
         }
     }
@@ -28,7 +29,7 @@ public class spawn_Sword4 : MonoBehaviour
         while(true){
             float x = Random.value < 0.5f ? -1f : 1f;
             float z = Random.value < 0.5f ? -1f : 1f;
-            PoolManager.Release(s4_Type, new Vector3(player.transform.position.x+Random.Range(3f, 6f)*x,10f,player.transform.position.z+Random.Range(3f, 6f)*z),Quaternion.Euler(Random.Range(0f, 360f),Random.Range(0f, 360f),Random.Range(0f, 360f))).GetComponent<shooting_Sword4>().scriptSword4 = this;
+            PoolManager.Release(s4_Type, new Vector3(player.transform.position.x+Random.Range(3f, 6f)*x,player.transform.position.y + sword4High,player.transform.position.z+Random.Range(3f, 6f)*z),Quaternion.Euler(Random.Range(0f, 360f),Random.Range(0f, 360f),Random.Range(0f, 360f))).GetComponent<shooting_Sword4>().scriptSword4 = this;
             yield return waitForDuring_time;
         }
     }

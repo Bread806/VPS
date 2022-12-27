@@ -11,8 +11,8 @@ public class spawn_Sword1 : MonoBehaviour
     int end_time;
     static float player_sword_distance = 1f;
     public GameObject[] s1_Type = new GameObject [7];
-    Vector3[] s1_Position = {new Vector3(0f,0.5f,player_sword_distance), new Vector3(player_sword_distance,0.5f,player_sword_distance), new Vector3(player_sword_distance,0.5f,0f), new Vector3(player_sword_distance,0.5f,-player_sword_distance),
-                             new Vector3(0f,0.5f,-player_sword_distance), new Vector3(-player_sword_distance,0.5f,-player_sword_distance), new Vector3(-player_sword_distance,0.5f,0f), new Vector3(-player_sword_distance,0.5f,player_sword_distance)};
+    Vector3[] s1_Position = {new Vector3(0f,0f,player_sword_distance), new Vector3(player_sword_distance,0f,player_sword_distance), new Vector3(player_sword_distance,0f,0f), new Vector3(player_sword_distance,0f,-player_sword_distance),
+                             new Vector3(0f,0f,-player_sword_distance), new Vector3(-player_sword_distance,0f,-player_sword_distance), new Vector3(-player_sword_distance,0f,0f), new Vector3(-player_sword_distance,0f,player_sword_distance)};
     Quaternion[] s1_Quaternion = {Quaternion.Euler(90f,0f,0f), Quaternion.Euler(90f,45f,0f), Quaternion.Euler(90f,90f,0f), Quaternion.Euler(90f,135f,0f), 
                                   Quaternion.Euler(90f,180f,0f), Quaternion.Euler(90f,225f,0f), Quaternion.Euler(90f,270f,0f), Quaternion.Euler(90f,315f,0f)};
     Coroutine U_R_D_L,RU_RD_LU_LD,all_direction;

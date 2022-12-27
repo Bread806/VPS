@@ -457,25 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb566907dfcfef2418ac3e4574054f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backpack: {fileID: 1570951837}
-  playerInterface: {fileID: 1984310509}
-  weaponBackground: {fileID: 0}
-  weaponList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  buttonList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  gameIsPause: 0
 --- !u!1 &450479171
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,10 +3045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6e247b380c46549b3e58f62bf4c0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GS: {fileID: 449938733}
-  backpack: {fileID: 1570951837}
-  weaponBackground: {fileID: 0}
-  playerInterface: {fileID: 1984310509}
 --- !u!224 &1551500619605916645 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6361021779863543809, guid: 5cef95da2f7de7741b282cf27c0b67fd, type: 3}

@@ -32,7 +32,7 @@ public class spawn_Sword6 : MonoBehaviour
                     sword6_rotate = 270f;
                 }
                 
-                PoolManager.Release(s6_Type[i], new Vector3(player.transform.position.x+player_sword_distance*direction,0.5f,player.transform.position.z+0.6f*u_or_d),Quaternion.Euler(0f,sword6_rotate,0f)).GetComponent<shooting_Sword6>().scriptSword6 = this;
+                PoolManager.Release(s6_Type[i], new Vector3(player.transform.position.x+player_sword_distance*direction,player.transform.position.y,player.transform.position.z+0.6f*u_or_d),Quaternion.Euler(0f,sword6_rotate,0f)).GetComponent<shooting_Sword6>().scriptSword6 = this;
                 u_or_d *= -1;
                 yield return WaitForSpawn_time;
             }   
