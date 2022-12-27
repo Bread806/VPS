@@ -25,6 +25,8 @@ public class SpawnEnemy : MonoBehaviour {
     // 玩家Z座標最大距離
     public int relativePlayerMaxZ;
     public Vector3 enemyPosition;
+    // 生怪冷卻時間
+    private float waitToSpawn;
                         
 
 
@@ -35,10 +37,11 @@ public class SpawnEnemy : MonoBehaviour {
         level = 0;
         timeToNextLevel = 30;
         incrementEnemy = 5;
-        relativePlayerMinX = 20;
-        relativePlayerMaxX = 40;
+        relativePlayerMinX = 10;
+        relativePlayerMaxX = 20;
         relativePlayerMinZ = 20;
-        relativePlayerMaxZ = 40;
+        relativePlayerMaxZ = 30;
+        waitToSpawn = 1.0f;
     }
 
     // Update is called once per frame
@@ -47,25 +50,21 @@ public class SpawnEnemy : MonoBehaviour {
         
     }
     private IEnumerator Spawn() {
-        yield return new WaitForSeconds (1);
+        yield return new WaitForSeconds (waitToSpawn);
         while (currentEnemyNumber < enemyTotal) {
             RandomEnemyPosition();
             Instantiate (enemyList, enemyPosition, Quaternion.identity);
             currentEnemyNumber++;
-            Debug.Log ("目前怪物數量: " + currentEnemyNumber);
         }
-        
     }
     private void RandomEnemyPosition() {
         int directionX = (int)Mathf.Sign (Random.Range (-1.0f, 1.0f));
         int directionZ = (int)Mathf.Sign (Random.Range (-1.0f, 1.0f));
-        //Debug.LogFormat ("X: {0}, Z: {1}", directionX, directionZ);
         enemyPosition = new Vector3 (player.transform.position.x + (Random.Range (relativePlayerMinX, relativePlayerMaxX) * directionX),
-                                     0.0f,
+                                     player.transform.position.y,
                                      player.transform.position.z + (Random.Range (relativePlayerMinZ, relativePlayerMaxZ) * directionZ));    
     }
     public void EnemyDie() {
         currentEnemyNumber--;
-        Debug.Log ("目前怪物數量: " + currentEnemyNumber);
     }
 }

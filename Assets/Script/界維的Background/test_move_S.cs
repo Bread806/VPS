@@ -33,5 +33,12 @@ public class test_move_S : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
+    void OnTriggerStay(Collider other) {
+        // 檢測敵人碰撞
+        if (other.tag == "enemy") {
+            Destroy (other.gameObject);
+            GameObject.Find ("Enemy Spawner").GetComponent<SpawnEnemy>().EnemyDie();
+        }
+    }
 }
 
