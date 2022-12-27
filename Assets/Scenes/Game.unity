@@ -3554,12 +3554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6e247b380c46549b3e58f62bf4c0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLevelUP: 0
-  playerMaxHP: 100
-  currentHP: 0
-  playerEXP: 0
-  currentEXP: 0
-  maxEXP: 100
 --- !u!224 &1551500619605916645 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6361021779863543809, guid: 5cef95da2f7de7741b282cf27c0b67fd, type: 3}
