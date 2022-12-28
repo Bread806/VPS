@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/QuarterView 3D Action BE5/ReadMe/Scripts/Editor/ReadmeEditorBE5.cs.meta
 guid: edd620b2f6703734fba22d55dc31ef25
+========
+guid: c54683f1461b7394c9041e41e407dee6
+>>>>>>>> 7c1226ef366bce46ff366a1c31ec105577bead48:Assets/Script/SpawnEnemy.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -7,7 +7,6 @@ public class spawn_Sword6 : MonoBehaviour
     public GameObject player;
     public GameObject[] s6_Type = new GameObject [5];
     public int level = 0;
-    int damage = 3;//暫定
     int target_level = 5;
     static float player_sword_distance = 3.5f;
     float u_or_d = 1f;
@@ -33,7 +32,7 @@ public class spawn_Sword6 : MonoBehaviour
                     sword6_rotate = 270f;
                 }
                 
-                PoolManager.Release(s6_Type[i], new Vector3(player.transform.position.x+player_sword_distance*direction,0.5f,player.transform.position.z+0.6f*u_or_d),Quaternion.Euler(0f,sword6_rotate,0f)).GetComponent<shooting_Sword6>().scriptSword6 = this;
+                PoolManager.Release(s6_Type[i], new Vector3(player.transform.position.x+player_sword_distance*direction,player.transform.position.y,player.transform.position.z+0.6f*u_or_d),Quaternion.Euler(0f,sword6_rotate,0f)).GetComponent<shooting_Sword6>().scriptSword6 = this;
                 u_or_d *= -1;
                 yield return WaitForSpawn_time;
             }   
@@ -56,10 +55,11 @@ public class spawn_Sword6 : MonoBehaviour
         yield return wait_level;
         during_time = 0f;
         WaitForDuring_time = new WaitForSeconds(during_time);
-        /*yield return new WaitUntil( () => playspeed.level == 8);
-        spawn_time = 0.1f;
-        WaitForSpawn_time = new WaitForSeconds(spawn_time);
-        newSpeed = true;*/
+        // yield return new WaitUntil( () => playspeed.level == 8);
+        // spawn_time = 0.1f;
+        // WaitForSpawn_time = new WaitForSeconds(spawn_time);
+        // newSpeed = true;
+        
         
     }
     void Awake(){

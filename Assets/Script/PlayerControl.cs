@@ -12,6 +12,8 @@ public class PlayerControl : MonoBehaviour
     Rigidbody m_Rigidbody;
     Quaternion m_Rotation = Quaternion.identity;
     private int exp;
+    Animator anim;
+    Rigidbody rb;
     
     void Start()
     {
@@ -39,8 +41,16 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.CompareTag("exptest"))
         {
             exp += 1;
+            Debug.Log(exp);
             other.gameObject.SetActive(false);
+        }    
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "enemy")
+        {
+            Destroy(other.gameObject);
+            GameObject.Find("Enemy Spawner").GetComponent<SpawnEnemy>().EnemyDie();
         }
-        Debug.Log(exp);
     }
 }

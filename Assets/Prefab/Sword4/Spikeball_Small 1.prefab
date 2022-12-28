@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4907255216377627934}
   m_Layer: 0
   m_Name: Spikeball_Small 1
-  m_TagString: enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,3 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cc5c7459fe7eb4e849e3d061d05a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  damage1: 3
+  scriptSword4: {fileID: 0}

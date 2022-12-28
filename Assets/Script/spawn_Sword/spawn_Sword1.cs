@@ -5,15 +5,15 @@ using UnityEngine;
 public class spawn_Sword1 : MonoBehaviour
 {
     public GameObject player;
+    private string[] swordDescribe = new string [8];   //by bread
     public GameObject Sword1Prefab_Normal;
     public int level = 0;
-    int damage = 5;//暫定
     int start_time;
     int end_time;
     static float player_sword_distance = 1f;
     public GameObject[] s1_Type = new GameObject [7];
-    Vector3[] s1_Position = {new Vector3(0f,0.5f,player_sword_distance), new Vector3(player_sword_distance,0.5f,player_sword_distance), new Vector3(player_sword_distance,0.5f,0f), new Vector3(player_sword_distance,0.5f,-player_sword_distance),
-                             new Vector3(0f,0.5f,-player_sword_distance), new Vector3(-player_sword_distance,0.5f,-player_sword_distance), new Vector3(-player_sword_distance,0.5f,0f), new Vector3(-player_sword_distance,0.5f,player_sword_distance)};
+    Vector3[] s1_Position = {new Vector3(0f,0f,player_sword_distance), new Vector3(player_sword_distance,0f,player_sword_distance), new Vector3(player_sword_distance,0f,0f), new Vector3(player_sword_distance,0f,-player_sword_distance),
+                             new Vector3(0f,0f,-player_sword_distance), new Vector3(-player_sword_distance,0f,-player_sword_distance), new Vector3(-player_sword_distance,0f,0f), new Vector3(-player_sword_distance,0f,player_sword_distance)};
     Quaternion[] s1_Quaternion = {Quaternion.Euler(90f,0f,0f), Quaternion.Euler(90f,45f,0f), Quaternion.Euler(90f,90f,0f), Quaternion.Euler(90f,135f,0f), 
                                   Quaternion.Euler(90f,180f,0f), Quaternion.Euler(90f,225f,0f), Quaternion.Euler(90f,270f,0f), Quaternion.Euler(90f,315f,0f)};
     Coroutine U_R_D_L,RU_RD_LU_LD,all_direction;
@@ -51,6 +51,16 @@ public class spawn_Sword1 : MonoBehaviour
         StartCoroutine(sword1_spawn(1,2,waitForStart_time1,waitForEnd_time0));
         StartCoroutine(sword1_spawn(0,1,waitForStart_time2,waitForEnd_time0));
     }
+
+    public string sword_describe(int num){
+        return swordDescribe[num];
+    }
+
+    // private void sword_describe_init(){
+    //     swordDescribe[0] = "開啟"
+    // }
+
+
     void Awake()
     {
         end_time = 6;
@@ -63,6 +73,7 @@ public class spawn_Sword1 : MonoBehaviour
         waitForStart_time2 = new WaitForSeconds(start_time); 
     }
     void Start(){
+        //sword_describe_init();
         U_R_D_L = StartCoroutine(sword1_spawn(0,2,waitForStart_time0,waitForEnd_time0));
         RU_RD_LU_LD = StartCoroutine(sword1_spawn(1,2,waitForStart_time1,waitForEnd_time0));
         all_direction = StartCoroutine(sword1_spawn(0,1,waitForStart_time2,waitForEnd_time0));
@@ -74,5 +85,5 @@ public class spawn_Sword1 : MonoBehaviour
             level+=1;
             Debug.Log(level);
         }
-    }
+    } 
 }

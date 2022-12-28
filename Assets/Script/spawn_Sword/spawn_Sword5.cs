@@ -8,8 +8,6 @@ public class spawn_Sword5 : MonoBehaviour
     public GameObject Sword5Prefab;
     public GameObject Sword5Prefab_1;
     public int level = 0;
-    int damage = 3;//暫定
-    int damage2 = 5;//暫定
     int target_level = 1;
     int during_time = 4;
     static float player_sword_distance = 3.5f;
@@ -23,7 +21,7 @@ public class spawn_Sword5 : MonoBehaviour
             float z = Random.value < 0.5f ? -1f : 1f;
             float zero_or_one_x = Random.value < 0.5f ? 0f : 1f;
             float zero_or_one_z = Mathf.Approximately(zero_or_one_x, 0f) ? 1f : Random.value < 0.5f ? 0f : 1f;
-            PoolManager.Release(s5_Type, new Vector3(player.transform.position.x+Random.Range(0, 2f)*x+player_sword_distance*x*zero_or_one_x,0.5f,player.transform.position.z+Random.Range(0, 2f)*z+player_sword_distance*z*zero_or_one_z), Quaternion.Euler(0f,Random.Range(0f, 360f),0f));
+            PoolManager.Release(s5_Type, new Vector3(player.transform.position.x+Random.Range(0, 2f)*x+player_sword_distance*x*zero_or_one_x,player.transform.position.y,player.transform.position.z+Random.Range(0, 2f)*z+player_sword_distance*z*zero_or_one_z), Quaternion.Euler(0f,Random.Range(0f, 360f),0f));
             yield return waitForDuring_time;
         }
     }
