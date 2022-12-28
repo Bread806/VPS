@@ -12,30 +12,43 @@ public class GameContoll : MonoBehaviour
     private GameObject playerInterface;  //遊戲中玩家狀態
     private GameObject weaponBackground; //升級武器背景
     private GameObject buttonBackround;
-    private GameObject[] weaponList = new GameObject [6];    //六個武器欄位
-    private TMP_Text[] itemText = new TMP_Text [3];
-    private Button[] buttonList = new Button [3];
+    private GameObject[] weaponList = new GameObject[6];    //六個武器欄位
+    private SwordDescribe swordDescribe = new SwordDescribe(); //武器描述
+    private TMP_Text[] itemText = new TMP_Text[3];
+    private TMP_Text soundText;
+    private Button[] buttonList = new Button[3];
     private bool gameIsPause;
-    private int[] currentItemNumber = new int [3];
+    private int[] currentItemNumber = new int[3];
+    private int soundVolume;
+    private AudioManager audioManager;
     // Start is called before the first frame update
 
-    void Awake(){
+    void Awake()
+    {
         //string = interfacearr[weaponList[i].level]
-        for (int i=0;i<buttonList.Length;i++){
+        for (int i = 0; i < buttonList.Length; i++)
+        {
             buttonList[i] = GetComponent<Button>();
             itemText[i] = GetComponent<TMP_Text>();
         }
+        soundText = GetComponent<TMP_Text>();
     }
     void Start()
     {
         // init variable
-        gameIsPause = false;
-        currentTime = 0f;
+  
         init_gameobj();
         init_button_listener();
-        
+
         // init hierarchy
         init_hierarchy();
+
+        gameIsPause = false;
+        currentTime = 0f;
+        audioManager.play_clip("BGM");
+        soundVolume = 3;
+        swordDescribe.init_dict();
+        soundText.text = "Volume\n" + soundVolume.ToString();
     }
 
     // Update is called once per frame
@@ -46,35 +59,56 @@ public class GameContoll : MonoBehaviour
             if (gameIsPause)
             {
                 resume();
+
             }
             else
             {
                 pause();
+
             }
         }
 
-        currentTime += Time.deltaTime; 
-        print (currentTime);
+        currentTime += Time.deltaTime;
+        //print (currentTime);
     }
-    
-    void pause()
+
+    public void pause()
     {
         backpack.SetActive(true);
         playerInterface.SetActive(false);
         buttonBackround.SetActive(true);
         Time.timeScale = 0f;
         gameIsPause = true;
+        //audioManager.lower_volume("BGM");
     }
-    void resume()
+    public void resume()
     {
         backpack.SetActive(false);
         playerInterface.SetActive(true);
         buttonBackround.SetActive(false);
         Time.timeScale = 1f;
         gameIsPause = false;
+        //audioManager.normal_volume("BGM");
     }
 
-    public void on_click_LV_UP(int n){
+    public void volume_up()
+    {
+        if(soundVolume == 10) return ;
+        audioManager.volume_up("BGM");
+        soundVolume++;
+        soundText.text = "Volume\n" + soundVolume.ToString();
+    }
+
+    public void volume_down()
+    {
+        if(soundVolume == 0) return ;
+        audioManager.volume_down("BGM");
+        soundVolume--;
+        soundText.text = "Volume\n" + soundVolume.ToString();
+    }
+
+    public void on_click_LV_UP(int n)
+    {
         //current weapon active script and level up
         active_weapon_and_LV_UP(n);
 
@@ -84,13 +118,21 @@ public class GameContoll : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-
-
-    public void LV_UP(){
-        for (int i=0; i<itemText.Length;i++){
-            currentItemNumber[i] = Random.Range(0,6);
-            //itemText[i].text = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>.list[]
-            itemText[i].text = "Sword " + (currentItemNumber[i]+1).ToString();
+    public void LV_UP()
+    {   
+        
+        audioManager.play_clip("LVUP");
+        for (int i = 0; i < itemText.Length; i++)
+        {
+            currentItemNumber[i] = Random.Range(0, 6);
+            int currentWeaponLevel = get_sword_level(currentItemNumber[i]);
+            itemText[i].text = swordDescribe.get_sword_describe(currentItemNumber[i], currentWeaponLevel);
+            
+            //itemText[i].text = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().swordDescribe[weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().level];
+            //int weaponLevel = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().S.level;
+            //int weaponLevel = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().get_sword_level();
+            //itemText[i].text = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().get_sword_describe(weaponLevel);
+            //itemText[i].text = "Sword " + (currentItemNumber[i] + 1).ToString();
         }
 
         backpack.SetActive(true);
@@ -100,37 +142,46 @@ public class GameContoll : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public float current_time(){
+    public float current_time()
+    {
         return currentTime;
     }
 
-    private void init_gameobj(){
+    private void init_gameobj()
+    {
         backpack = GameObject.Find("Backpack");
         playerInterface = GameObject.Find("PlayInterface");
         weaponBackground = GameObject.Find("WeaponBackground");
         weaponList = GameObject.FindGameObjectsWithTag("Sword");
         buttonBackround = GameObject.Find("ButtonBackground");
-        for (int i=1; i<=buttonList.Length; i++){
-            currentItemNumber[i-1] = 0;
-            buttonList[i-1] = GameObject.Find("ItemButton" + i.ToString()).GetComponent<Button>(); 
-            itemText[i-1]   = GameObject.Find("ItemText" + i.ToString()).GetComponent<TMP_Text>();      
+        soundText = GameObject.Find("SoundText").GetComponent<TMP_Text>();
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
+        for (int i = 1; i <= buttonList.Length; i++)
+        {
+            currentItemNumber[i - 1] = 0;
+            buttonList[i - 1] = GameObject.Find("ItemButton" + i.ToString()).GetComponent<Button>();
+            itemText[i - 1] = GameObject.Find("ItemText" + i.ToString()).GetComponent<TMP_Text>();
         }
     }
 
-    private void init_button_listener(){
-        buttonList[0].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[0]);});
-        buttonList[1].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[1]);});
-        buttonList[2].onClick.AddListener(delegate() {on_click_LV_UP(currentItemNumber[2]);});
+    private void init_button_listener()
+    {
+        buttonList[0].onClick.AddListener(delegate () { on_click_LV_UP(currentItemNumber[0]); });
+        buttonList[1].onClick.AddListener(delegate () { on_click_LV_UP(currentItemNumber[1]); });
+        buttonList[2].onClick.AddListener(delegate () { on_click_LV_UP(currentItemNumber[2]); });
     }
 
-    private void init_hierarchy(){
+    private void init_hierarchy()
+    {
         backpack.SetActive(false);
         weaponBackground.SetActive(false);
         buttonBackround.SetActive(false);
     }
 
-    private void active_weapon_and_LV_UP(int n){
-        switch (n){
+    private void active_weapon_and_LV_UP(int n)
+    {
+        switch (n)
+        {
             case 0:
                 weaponList[n].GetComponent<spawn_Sword1>().enabled = true;
                 weaponList[n].GetComponent<spawn_Sword1>().level++;
@@ -156,7 +207,26 @@ public class GameContoll : MonoBehaviour
                 weaponList[n].GetComponent<spawn_Sword6>().level++;
                 break;
         }
-        print ("Sword" + n.ToString() +"  LV up.");
+        print("Sword" + n.ToString() + "  LV up.");
     }
-    
+
+    private int get_sword_level(int n){
+        switch (n)
+        {
+            case 0:
+                return weaponList[n].GetComponent<spawn_Sword1>().level;
+            case 1:
+                return weaponList[n].GetComponent<spawn_Sword2>().level;
+            case 2:
+                return weaponList[n].GetComponent<spawn_Sword3>().level;
+            case 3:
+                return weaponList[n].GetComponent<spawn_Sword4>().level;
+            case 4:
+                return weaponList[n].GetComponent<spawn_Sword5>().level;
+            case 5:
+                return weaponList[n].GetComponent<spawn_Sword6>().level;
+        }
+        return 0;
+    }
+
 }
