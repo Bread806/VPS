@@ -1,28 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 
 public class PlayerControl : MonoBehaviour
 {
-    public float movementSpeed = 3;
-    public float timeBeforeNextJump = 1.2f;
-    private float canJump = 0f;
+    public float turnSpeed = 20f;
+    public float speed = 3;
+    Animator m_Animator;
+    Vector3 m_Movement;
+    Rigidbody m_Rigidbody;
+    Quaternion m_Rotation = Quaternion.identity;
     private int exp;
-    public TextMeshProUGUI countText;
-    Animator anim;
-    Rigidbody rb;
     
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        m_Animator = GetComponentInChildren<Animator>();
+        m_Rigidbody = GetComponent<Rigidbody>();
         exp = 0;
     }
 
     void Update()
     {
-        ControllPlayer();
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        m_Movement.Set(horizontal, 0f, vertical);
+        m_Movement.Normalize();
+        bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
+        bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
+        bool isWalking = hasHorizontalInput || hasVerticalInput;
+        m_Animator.SetBool("isWalking", isWalking);
+        transform.position += m_Movement * speed * (isWalking ? 1f : 0f) * Time.deltaTime;
+        transform.LookAt(transform.position + m_Movement);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -32,21 +42,5 @@ public class PlayerControl : MonoBehaviour
             other.gameObject.SetActive(false);
         }
         Debug.Log(exp);
-    }
-    void ControllPlayer()
-    {
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        float moveVertical = Input.GetAxisRaw("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-        if (movement != Vector3.zero)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
-        }
-
-
-        transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
-
     }
 }
