@@ -17,10 +17,6 @@ public class EnemyAction : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        // Vector3 direction = player.transform.position - transform.position;  
-        // float angle = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
-        // transform.rotation = Quaternion.AngleAxis (angle, Vector3.right);
-
         // agent跟隨player位置
         agent.SetDestination (player.transform.position);
         // 怪物走路動畫
