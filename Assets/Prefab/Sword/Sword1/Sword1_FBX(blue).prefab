@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -9109743605225595469}
   m_Layer: 0
   m_Name: Sword1_FBX(blue)
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sword1_speed: 15
-  damage: 5
 --- !u!54 &6801372485529372031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,4 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
-  level: 0
+  scriptSword2: {fileID: 0}
+  scriptSword3: {fileID: 0}
+  scriptSword4: {fileID: 0}

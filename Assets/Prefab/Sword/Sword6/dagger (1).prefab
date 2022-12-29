@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8488292671695598444}
   m_Layer: 0
   m_Name: dagger (1)
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sword6_speed: 30
   scriptSword6: {fileID: 0}
-  damage: 3
 --- !u!136 &7950851779712337325
 CapsuleCollider:
   m_ObjectHideFlags: 0

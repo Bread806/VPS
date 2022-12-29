@@ -14381,7 +14381,7 @@ GameObject:
   - component: {fileID: -3104100686903298311}
   m_Layer: 0
   m_Name: Dark Singularity_R_L
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14415,8 +14415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be4fd26c5a7924fb7e5e3f72a07ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  scriptSword3: {fileID: 0}
 --- !u!114 &-3104100686903298311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14432,6 +14430,7 @@ MonoBehaviour:
   damage: 25
   scriptSword2: {fileID: 0}
   scriptSword3: {fileID: 0}
+  scriptSword4: {fileID: 0}
 --- !u!1 &3222242712944826434
 GameObject:
   m_ObjectHideFlags: 0

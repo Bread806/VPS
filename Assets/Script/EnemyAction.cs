@@ -8,11 +8,13 @@ public class EnemyAction : MonoBehaviour {
     public GameObject player;
     private NavMeshAgent agent;
     private Animator animator;
+    private EenemyState enemyState;
     // Start is called before the first frame update
     void Start() {
         player = GameObject.Find ("player");
         agent = this.GetComponent<NavMeshAgent>();
         animator = this.GetComponent<Animator>();
+        enemyState = this.GetComponent<EenemyState>();
     }
 
     // Update is called once per frame
@@ -21,5 +23,12 @@ public class EnemyAction : MonoBehaviour {
         agent.SetDestination (player.transform.position);
         // 怪物走路動畫
         animator.SetInteger("Walk", 1);
+    }
+     // 被武器攻擊
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "Sword") {
+            print ("hit enemy");
+            enemyState.HurtDamage (other.GetComponent<sword_state>().damage);
+        }
     }
 }

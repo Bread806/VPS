@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,15 +21,10 @@ public class EenemyState : MonoBehaviour {
             Destroy (this.gameObject);
         }
     }
-    // 被武器攻擊
-    void OnTriggerStay(Collider other) {
-        // 檢測敵人碰撞
-        if (other.tag == "Player") {
-            print ("Die");
-            Hp = 0;
-        }
-    }
     public int GetEnemyDamage() {
         return damage;
+    }
+    public void HurtDamage (int damage) {
+        Hp -= damage;
     }
 }

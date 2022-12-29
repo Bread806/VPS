@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1701153452104307828}
   m_Layer: 0
   m_Name: Dark Singularity 1
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
