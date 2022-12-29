@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameContoll : MonoBehaviour
 {
@@ -11,12 +12,14 @@ public class GameContoll : MonoBehaviour
     private float currentTime;           //遊戲時間
     private GameObject playerInterface;  //遊戲中玩家狀態
     private GameObject weaponBackground; //升級武器背景
+    private GameObject gameOver;
     private GameObject buttonBackround;
     private GameObject[] weaponList = new GameObject[6];    //六個武器欄位
     private SwordDescribe swordDescribe = new SwordDescribe(); //武器描述
     private TMP_Text[] itemText = new TMP_Text[3];
-    private Image imageList;
     private TMP_Text soundText;
+    public Sprite[] weaponImageList = new Sprite[6];
+    private Image[] LVUPImageList = new Image[3];
     private Button[] buttonList = new Button[3];
     private bool gameIsPause;
     private int[] currentItemNumber = new int[3];
@@ -32,10 +35,13 @@ public class GameContoll : MonoBehaviour
             buttonList[i] = GetComponent<Button>();
             itemText[i] = GetComponent<TMP_Text>();
         }
+        for (int i=0; i<LVUPImageList.Length; i++)
+            LVUPImageList[i] = GetComponent<Image>();
         soundText = GetComponent<TMP_Text>();
     }
     void Start()
     {
+        Time.timeScale = 1f;
         // init variable
   
         init_gameobj();
@@ -65,7 +71,6 @@ public class GameContoll : MonoBehaviour
             else
             {
                 pause();
-
             }
         }
 
@@ -127,6 +132,7 @@ public class GameContoll : MonoBehaviour
         {
             currentItemNumber[i] = Random.Range(0, 6);
             int currentWeaponLevel = get_sword_level(currentItemNumber[i]);
+            LVUPImageList[i].sprite = weaponImageList[currentItemNumber[i]];
             itemText[i].text = swordDescribe.get_sword_describe(currentItemNumber[i], currentWeaponLevel);
         }
 
@@ -149,6 +155,7 @@ public class GameContoll : MonoBehaviour
         weaponBackground = GameObject.Find("WeaponBackground");
         weaponList = GameObject.FindGameObjectsWithTag("Sword");
         buttonBackround = GameObject.Find("ButtonBackground");
+        gameOver = GameObject.Find("Gameover");
         soundText = GameObject.Find("SoundText").GetComponent<TMP_Text>();
         audioManager = GameObject.FindObjectOfType<AudioManager>();
         for (int i = 1; i <= buttonList.Length; i++)
@@ -156,7 +163,14 @@ public class GameContoll : MonoBehaviour
             currentItemNumber[i - 1] = 0;
             buttonList[i - 1] = GameObject.Find("ItemButton" + i.ToString()).GetComponent<Button>();
             itemText[i - 1] = GameObject.Find("ItemText" + i.ToString()).GetComponent<TMP_Text>();
+            LVUPImageList[i - 1] = GameObject.Find("Item" + i.ToString()).GetComponent<Image>();
+            LVUPImageList[i - 1].sprite = Resources.Load<Sprite>("Assets/Resources/This/S1.png");
         }
+        for (int i=1; i<=weaponImageList.Length; i++){
+            weaponImageList[i - 1] = Resources.Load<Sprite>("This/S" + i.ToString());
+            //print ("Assets/Resources/This/S" + i.ToString() + ".png");
+        }
+        
     }
 
     private void init_button_listener()
@@ -168,9 +182,27 @@ public class GameContoll : MonoBehaviour
 
     private void init_hierarchy()
     {
-        backpack.SetActive(false);
+        backpack.SetActive(false); 
         weaponBackground.SetActive(false);
         buttonBackround.SetActive(false);
+        gameOver.SetActive(false);
+    }
+
+    public void end_game(){
+        gameOver.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPause = true;
+    }
+
+    public void reload_game(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        print ("reset done.");
+        gameIsPause = false;
+        //ceneManager.LoadScene ("Game");
+    }
+
+    public void back_to_menu(){
+        SceneManager.LoadScene ("StartMenu");
     }
 
     private void active_weapon_and_LV_UP(int n)

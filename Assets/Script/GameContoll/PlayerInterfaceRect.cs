@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class PlayerInterfaceRect : MonoBehaviour
+
 {
+
+    public TMP_Text BPHPText;
+
+    public TMP_Text BPEXPText;
+
     public HealBar healBar;
     public EXPBar expBar;
     public PlayerState player;
@@ -12,13 +20,19 @@ public class PlayerInterfaceRect : MonoBehaviour
         healBar = GetComponent<HealBar>();
         expBar =  GetComponent<EXPBar>();
         player =  GetComponent<PlayerState>();
+        //BPEXPText = GetComponent<TMP_Text>();
+        //BPHPText = GetComponent<TMP_Text>();
     }
     // Start is called before the first frame update
     void Start()
     {
+        //BPHPText = GameObject.Find("BHPText").GetComponent<TMP_Text>();
+        //BPEXPText = GameObject.Find("BEXPText").GetComponent<TMP_Text>();
         healBar= GameObject.Find("HealBar").GetComponent<HealBar>();
         expBar = GameObject.Find("EXPBar").GetComponent<EXPBar>();
         player = GameObject.Find("player").GetComponent<PlayerState>();
+
+
 
         expBar.init(player.max_exp());expBar.set_zero_exp();
         healBar.set_max_health(player.playerMaxHP);
@@ -36,6 +50,8 @@ public class PlayerInterfaceRect : MonoBehaviour
         }
         rect_HP();
         rect_EXP();
+        //show_EXP();
+        //show_HP();
     }
 
     void rect_HP(){
@@ -44,6 +60,14 @@ public class PlayerInterfaceRect : MonoBehaviour
 
     void rect_EXP(){
         expBar.set_exp(player.current_EXP());
+    }
+
+    private void show_EXP(){
+        BPEXPText.text = player.current_EXP().ToString() + " / " + player.max_exp().ToString();
+    }
+
+    private void show_HP(){
+        BPHPText.text = player.current_HP().ToString();
     }
 
 
