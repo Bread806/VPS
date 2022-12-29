@@ -30,14 +30,14 @@ public class PlayerState : MonoBehaviour
     void Update()
     {
         //isLevelUP = false;
-        if (Input.GetKeyUp(KeyCode.K)){
-            get_EXP(50);
+        // if (Input.GetKeyUp(KeyCode.K)){
+        //     get_EXP(50);
             
-        }
+        // }
 
-        if (Input.GetKeyUp(KeyCode.T)){
-            take_damage(10);
-        }
+        // if (Input.GetKeyUp(KeyCode.T)){
+        //     take_damage(10);
+        // }
 
         if (currentEXP >= maxEXP){
             exp_set_empty(); 
