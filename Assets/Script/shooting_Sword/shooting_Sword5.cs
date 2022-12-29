@@ -14,8 +14,6 @@ public class shooting_Sword5 : MonoBehaviour
     Vector3 sum_rotate;
     Vector3 sw5_rotate;
     float random_rotate;
-    public int damage = 3;//暫定
-    public int damage1 = 5;//暫定
     IEnumerator change_speed(){
         while(true){
             sw5_distance = -sword5_speed*Time.deltaTime;
