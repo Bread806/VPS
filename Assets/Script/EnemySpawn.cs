@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour {
+public class EnemySpawn : MonoBehaviour {
 
     public GameObject player;
     public GameObject[] enemyList;
@@ -38,7 +38,7 @@ public class SpawnEnemy : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        player = GameObject.Find ("player");
+        
         enemyTotal = 10;
         currentEnemyNumber = 0;
         level = 0;
