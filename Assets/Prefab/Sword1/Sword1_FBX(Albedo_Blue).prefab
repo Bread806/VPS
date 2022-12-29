@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 8182926191963491778}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 2.02, y: 0.0000038146973, z: -2.06}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sword1_speed: 15
+  damage: 5
 --- !u!54 &-1894430023331251819
 Rigidbody:
   m_ObjectHideFlags: 0

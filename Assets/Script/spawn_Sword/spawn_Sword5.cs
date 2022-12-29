@@ -10,7 +10,7 @@ public class spawn_Sword5 : MonoBehaviour
     public int level = 0;
     int target_level = 1;
     int during_time = 4;
-    static float player_sword_distance = 3.5f;
+    static float player_sword_distance = 1.5f;
     Coroutine sword5_0, sword5_1, sword5_2, sword5_big_0, sword5_big_1, sword5_big_2, sword5_big_3, sword5_big_4;
     WaitUntil wait_level;
     WaitForSeconds waitForDuring_time;

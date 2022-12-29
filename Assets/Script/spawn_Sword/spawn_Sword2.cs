@@ -10,7 +10,7 @@ public class spawn_Sword2 : MonoBehaviour
     public int damage = 1;//暫定
     int during_time = 5;
     public int target_level = 1;
-    static float player_sword_distance = 3f;
+    static float player_sword_distance = 1f;
     public bool newDuration = false, newScale_big = false;
 
     Coroutine start_sword2_0,start_sword2_1,start_sword2_2;
