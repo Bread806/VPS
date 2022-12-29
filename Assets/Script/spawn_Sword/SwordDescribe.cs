@@ -81,6 +81,7 @@ public class SwordDescribe : MonoBehaviour
 
 
     public string get_sword_describe(int num, int level){ //bread
+        if (level > 8 ) return "null";
         switch (num){
             case 0:
             return swordDescribe1[level];

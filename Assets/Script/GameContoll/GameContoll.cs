@@ -15,6 +15,7 @@ public class GameContoll : MonoBehaviour
     private GameObject[] weaponList = new GameObject[6];    //六個武器欄位
     private SwordDescribe swordDescribe = new SwordDescribe(); //武器描述
     private TMP_Text[] itemText = new TMP_Text[3];
+    private Image imageList;
     private TMP_Text soundText;
     private Button[] buttonList = new Button[3];
     private bool gameIsPause;
@@ -127,12 +128,6 @@ public class GameContoll : MonoBehaviour
             currentItemNumber[i] = Random.Range(0, 6);
             int currentWeaponLevel = get_sword_level(currentItemNumber[i]);
             itemText[i].text = swordDescribe.get_sword_describe(currentItemNumber[i], currentWeaponLevel);
-            
-            //itemText[i].text = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().swordDescribe[weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().level];
-            //int weaponLevel = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().S.level;
-            //int weaponLevel = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().get_sword_level();
-            //itemText[i].text = weaponList[currentItemNumber[i]].GetComponent<spawn_Sword1>().get_sword_describe(weaponLevel);
-            //itemText[i].text = "Sword " + (currentItemNumber[i] + 1).ToString();
         }
 
         backpack.SetActive(true);
