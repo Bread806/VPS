@@ -47,7 +47,7 @@ public class PlayerState : MonoBehaviour
         }
 
         if (currentHP <= 0){
-            //dead
+            GS.GetComponent<GameContoll>().end_game();
         }
     }
 
