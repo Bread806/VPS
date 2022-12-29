@@ -11,7 +11,7 @@ public class spawn_Sword6 : MonoBehaviour
     public AudioClip weapon_audio;
     AudioSource audiosource;
     int target_level = 5;
-    static float player_sword_distance = 3.5f;
+    static float player_sword_distance = 1.5f;
     float u_or_d = 1f;
     float sword6_count;
     float sword6_rotate = 270f;
