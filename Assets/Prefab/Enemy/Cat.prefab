@@ -390,9 +390,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
-  damage: 0
-  level: 0
-  expValue: 0
+  damage: 5
+  level: 1
   exp: {fileID: 6978548028542613919, guid: 56ad991a0bdf85d49827778aab2b5f92, type: 3}
 --- !u!1 &1686542506629698
 GameObject:
