@@ -3082,6 +3082,7 @@ MonoBehaviour:
   - {fileID: 5049299261928276783, guid: d7ec80081b414c24d88ae42d227a97a6, type: 3}
   level: 0
   weapon_audio: {fileID: 8300000, guid: ba76f38915a3de346a1a80ca9dedc5b1, type: 3}
+  during_time: 3
   newSpeed: 0
 --- !u!82 &1466426037
 AudioSource:
@@ -4726,7 +4727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 20
-  speed: 5
+  speed: 3
 --- !u!114 &2132293982
 MonoBehaviour:
   m_ObjectHideFlags: 0

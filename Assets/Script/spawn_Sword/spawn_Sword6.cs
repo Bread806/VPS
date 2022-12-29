@@ -17,7 +17,7 @@ public class spawn_Sword6 : MonoBehaviour
     float sword6_rotate = 270f;
     float direction = 1;
     float spawn_time = 0.2f;
-    float during_time = 3f;
+    public float during_time = 3f;
     public bool newSpeed = false;
     WaitForSeconds WaitForSpawn_time, WaitForDuring_time;
     WaitUntil wait_level;
@@ -58,10 +58,10 @@ public class spawn_Sword6 : MonoBehaviour
         yield return wait_level;
         during_time = 0f;
         WaitForDuring_time = new WaitForSeconds(during_time);
-        // yield return new WaitUntil( () => playspeed.level == 8);
-        // spawn_time = 0.1f;
-        // WaitForSpawn_time = new WaitForSeconds(spawn_time);
-        // newSpeed = true;
+        yield return new WaitUntil( () => player.GetComponent<PlayerControl>().speed == 10 && level == 8);
+        spawn_time = 0.1f;
+        WaitForSpawn_time = new WaitForSeconds(spawn_time);
+        newSpeed = true;
         
         
     }
