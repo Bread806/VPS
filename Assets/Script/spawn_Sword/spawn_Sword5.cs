@@ -13,18 +13,15 @@ public class spawn_Sword5 : MonoBehaviour
     public int level = 0;
     int target_level = 1;
     int during_time = 4;
-    static float player_sword_distance = 1.5f;
+    //static float player_sword_distance = 1.5f;
     Coroutine sword5_0, sword5_1, sword5_2, sword5_big_0, sword5_big_1, sword5_big_2, sword5_big_3, sword5_big_4;
     WaitUntil wait_level;
     WaitForSeconds waitForDuring_time;
 
     IEnumerator sword5_spawn(GameObject s5_Type){
         while(true){
-            float x = Random.value < 0.5f ? -1f : 1f;
-            float z = Random.value < 0.5f ? -1f : 1f;
-            float zero_or_one_x = Random.value < 0.5f ? 0f : 1f;
-            float zero_or_one_z = Mathf.Approximately(zero_or_one_x, 0f) ? 1f : Random.value < 0.5f ? 0f : 1f;
-            PoolManager.Release(s5_Type, new Vector3(player.transform.position.x+Random.Range(0, 2f)*x+player_sword_distance*x*zero_or_one_x,player.transform.position.y,player.transform.position.z+Random.Range(0, 2f)*z+player_sword_distance*z*zero_or_one_z), Quaternion.Euler(0f,Random.Range(0f, 360f),0f));
+            float sword5Rotate = player.transform.eulerAngles.y+180f;
+            PoolManager.Release(s5_Type, player.transform.position, Quaternion.Euler(0f,sword5Rotate,0f));
             audiosource.PlayOneShot(weapon_audio);
             yield return waitForDuring_time;
         }
