@@ -75,6 +75,7 @@ public class EnemySpawn : MonoBehaviour {
     }
     public void EnemyDie() {
         currentEnemyNumber--;
+        player.GetComponent<PlayerState>().add_kill();
     }
     private IEnumerator Spawn() {
         yield return new WaitForSeconds (waitToSpawn);
