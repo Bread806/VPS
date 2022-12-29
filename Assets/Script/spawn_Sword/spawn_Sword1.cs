@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class spawn_Sword1 : MonoBehaviour
 {
     public GameObject player;
+    public AudioClip weapon_audio;
+    AudioSource audiosource;
     public GameObject Sword1Prefab_Normal;
     public int level = 0;
     int start_time;
@@ -24,10 +27,14 @@ public class spawn_Sword1 : MonoBehaviour
         yield return waitForStart_time;
         while(true){
             for(int i=type;i<8;i+=add){
-                if(i<level)
-                    PoolManager.Release(s1_Type[i], player.transform.position+s1_Position[i], s1_Quaternion[i]);
-                else
+                if(i<level){
+                    audiosource.PlayOneShot(weapon_audio);
+                    PoolManager.Release(s1_Type[i], player.transform.position+s1_Position[i], s1_Quaternion[i]);                    
+                }
+                else{
+                    audiosource.PlayOneShot(weapon_audio);
                     PoolManager.Release(Sword1Prefab_Normal, player.transform.position+s1_Position[i], s1_Quaternion[i]);
+                }
             }
             
             yield return waitForEnd_time;
@@ -67,6 +74,7 @@ public class spawn_Sword1 : MonoBehaviour
         U_R_D_L = StartCoroutine(sword1_spawn(0,2,waitForStart_time0,waitForEnd_time0));
         RU_RD_LU_LD = StartCoroutine(sword1_spawn(1,2,waitForStart_time1,waitForEnd_time0));
         all_direction = StartCoroutine(sword1_spawn(0,1,waitForStart_time2,waitForEnd_time0));
+        audiosource = GetComponent<AudioSource>();
         StartCoroutine(level_skill());
     }
     void Update()

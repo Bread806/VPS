@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class spawn_Sword2 : MonoBehaviour
 {
     public GameObject player;
     public GameObject Sword2Prefab;
+    public AudioClip weapon_audio;
+    AudioSource audiosource;
     public int level = 0;
     public int damage = 1;//暫定
     int during_time = 5;
@@ -22,6 +25,7 @@ public class spawn_Sword2 : MonoBehaviour
         while(true){
             float x = Random.value < 0.5f ? -1f : 1f;
             float z = Random.value < 0.5f ? -1f : 1f;
+            audiosource.PlayOneShot(weapon_audio);
             PoolManager.Release(Sword2Prefab, new Vector3(player.transform.position.x+player_sword_distance*x,player.transform.position.y,player.transform.position.z+player_sword_distance*z), Quaternion.Euler(0f,Random.Range(0f, 360f),0f)).GetComponent<shooting_Sword2>().scriptSword2 = this;
             yield return waitForDuring_time;
         }
@@ -66,6 +70,7 @@ public class spawn_Sword2 : MonoBehaviour
         wait_level = new WaitUntil( () => level == target_level);
     }
     void Start() {
+        audiosource = GetComponent<AudioSource>();
         start_sword2_0 = StartCoroutine(sword2_spawn());
         StartCoroutine(level_skill());
     }
