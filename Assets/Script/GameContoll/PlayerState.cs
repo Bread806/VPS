@@ -39,10 +39,11 @@ public class PlayerState : MonoBehaviour
         }
 
         if (currentEXP >= maxEXP){
+            exp_set_empty(); 
             GS.GetComponent<GameContoll>().LV_UP();
-            exp_set_empty();   
-            exp_increase(100);
             level_up_state_update();
+            exp_increase(100);
+            
             
         }
 
