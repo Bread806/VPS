@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 183588961637646768}
   - component: {fileID: -4712479128826268308}
+  - component: {fileID: 3872263231375744968}
   m_Layer: 0
   m_Name: UAV Trident 1
   m_TagString: Untagged
@@ -45,8 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b2ca3bd08b9a6428c0fc373791ee5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sword5_speed: 10
-  sword5_speed2: 50
+  damage: 3
+  damage1: 5
+--- !u!136 &3872263231375744968
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066903289889794031}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.9
+  m_Height: 2.4
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.12}
 --- !u!1 &9169228655175449654
 GameObject:
   m_ObjectHideFlags: 0

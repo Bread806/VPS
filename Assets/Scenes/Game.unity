@@ -2145,7 +2145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2132293978}
-  S: {fileID: 0}
   Sword1Prefab_Normal: {fileID: 4281074404059497711, guid: 6863e1b90f9ebf34d8840158a1220dfc, type: 3}
   level: 0
   s1_Type:
