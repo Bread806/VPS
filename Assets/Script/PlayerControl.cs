@@ -36,21 +36,21 @@ public class PlayerControl : MonoBehaviour
         transform.position += m_Movement * speed * (isWalking ? 1f : 0f) * Time.deltaTime;
         transform.LookAt(transform.position + m_Movement);
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("exptest"))
-        {
-            exp += 1;
-            Debug.Log(exp);
-            other.gameObject.SetActive(false);
-        }    
-    }
-    void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "enemy")
-        {
-            Destroy(other.gameObject);
-            GameObject.Find("Enemy Spawner").GetComponent<SpawnEnemy>().EnemyDie();
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("exptest"))
+    //     {
+    //         exp += 1;
+    //         Debug.Log(exp);
+    //         other.gameObject.SetActive(false);
+    //     }    
+    // }
+    // void OnTriggerStay(Collider other)
+    // {
+    //     if (other.tag == "enemy")
+    //     {
+    //         Destroy(other.gameObject);
+    //         GameObject.Find("Enemy Spawner").GetComponent<SpawnEnemy>().EnemyDie();
+    //     }
+    // }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class spawn_Sword1 : MonoBehaviour
 {
     public GameObject player;
-    public SwordDescribe S;
     public GameObject Sword1Prefab_Normal;
     public int level = 0;
     int start_time;

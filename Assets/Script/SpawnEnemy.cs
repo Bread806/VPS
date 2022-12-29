@@ -38,7 +38,6 @@ public class SpawnEnemy : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        //enemyList = new GameObject[4];
         enemyTotal = 10;
         currentEnemyNumber = 0;
         level = 0;
