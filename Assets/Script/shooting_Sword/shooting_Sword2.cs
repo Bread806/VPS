@@ -6,8 +6,7 @@ public class shooting_Sword2 : MonoBehaviour
 {
     float sword2_speed = 10;
     public float duration = 100, scale_big = 0;
-    public int damage = 1;
-    Vector3 sword2_scale, originalScale = new Vector3(15f,15f,15f);
+    Vector3 sword2_scale, originalScale = new Vector3(10f,10f,10f);
     public spawn_Sword2 scriptSword2;
 
     void Update()
@@ -16,8 +15,6 @@ public class shooting_Sword2 : MonoBehaviour
             duration = 110;
         if(scriptSword2 != null && scriptSword2.newScale_big)
             scale_big = 0.01f;
-        if(scriptSword2 != null)
-            damage = scriptSword2.damage;
         //Debug.Log(duration);
         sword2_scale = transform.localScale;
         transform.Translate(sword2_speed*Time.deltaTime,0,sword2_speed*Time.deltaTime);

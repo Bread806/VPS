@@ -38,6 +38,7 @@ public class SpawnEnemy : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        player = GameObject.Find ("player");
         enemyTotal = 10;
         currentEnemyNumber = 0;
         level = 0;
@@ -61,6 +62,9 @@ public class SpawnEnemy : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (Input.GetKeyUp(KeyCode.Z)){
+            LevelUp();
+        }
         gamingTime += Time.deltaTime;
         //print (gamingTime);
         if (level < 10 && gamingTime >= timeToNextLevel * (level+1)) {

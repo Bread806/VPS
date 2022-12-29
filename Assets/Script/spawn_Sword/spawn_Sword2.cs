@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class spawn_Sword2 : MonoBehaviour
 {
     public GameObject player;
     public GameObject Sword2Prefab;
+    public AudioClip weapon_audio;
+    AudioSource audiosource;
     public int level = 0;
-    public int damage = 1;//暫定
+    public int damage = 10;//暫定
     int during_time = 5;
     public int target_level = 1;
-    static float player_sword_distance = 3f;
+    static float player_sword_distance = 1f;
     public bool newDuration = false, newScale_big = false;
 
     Coroutine start_sword2_0,start_sword2_1,start_sword2_2;
@@ -22,22 +25,25 @@ public class spawn_Sword2 : MonoBehaviour
         while(true){
             float x = Random.value < 0.5f ? -1f : 1f;
             float z = Random.value < 0.5f ? -1f : 1f;
-            PoolManager.Release(Sword2Prefab, new Vector3(player.transform.position.x+player_sword_distance*x,player.transform.position.y,player.transform.position.z+player_sword_distance*z), Quaternion.Euler(0f,Random.Range(0f, 360f),0f)).GetComponent<shooting_Sword2>().scriptSword2 = this;
+            audiosource.PlayOneShot(weapon_audio);
+            GameObject temp = PoolManager.Release(Sword2Prefab, new Vector3(player.transform.position.x+player_sword_distance*x,player.transform.position.y,player.transform.position.z+player_sword_distance*z), Quaternion.Euler(0f,Random.Range(0f, 360f),0f)) as GameObject;
+            temp.GetComponent<shooting_Sword2>().scriptSword2 = this;
+            temp.GetComponent<sword_state>().scriptSword2 = this;
             yield return waitForDuring_time;
         }
     }
     IEnumerator level_skill(){
         yield return wait_level;
-        damage += 1;
+        damage += 10;
         target_level += 1;
         yield return wait_level;
-        damage += 1;
+        damage += 10;
         target_level += 1;
         yield return wait_level;
-        damage += 1;
+        damage += 10;
         target_level += 1;
         yield return wait_level;
-        damage += 1;
+        damage += 10;
         target_level += 1;
         yield return wait_level;                                                        //持續時間增加
         newDuration = true;
@@ -62,10 +68,12 @@ public class spawn_Sword2 : MonoBehaviour
         newScale_big = true;
     }
     void Awake() {
+        damage = 10;
         waitForDuring_time = new WaitForSeconds(during_time);
         wait_level = new WaitUntil( () => level == target_level);
     }
     void Start() {
+        audiosource = GetComponent<AudioSource>();
         start_sword2_0 = StartCoroutine(sword2_spawn());
         StartCoroutine(level_skill());
     }

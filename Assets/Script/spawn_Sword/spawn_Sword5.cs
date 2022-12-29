@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class spawn_Sword5 : MonoBehaviour
 {
     public GameObject player;
+    public AudioClip weapon_audio;
+    AudioSource audiosource;
     public GameObject Sword5Prefab;
     public GameObject Sword5Prefab_1;
     public int level = 0;
     int target_level = 1;
     int during_time = 4;
-    static float player_sword_distance = 3.5f;
+    static float player_sword_distance = 1.5f;
     Coroutine sword5_0, sword5_1, sword5_2, sword5_big_0, sword5_big_1, sword5_big_2, sword5_big_3, sword5_big_4;
     WaitUntil wait_level;
     WaitForSeconds waitForDuring_time;
@@ -22,6 +25,7 @@ public class spawn_Sword5 : MonoBehaviour
             float zero_or_one_x = Random.value < 0.5f ? 0f : 1f;
             float zero_or_one_z = Mathf.Approximately(zero_or_one_x, 0f) ? 1f : Random.value < 0.5f ? 0f : 1f;
             PoolManager.Release(s5_Type, new Vector3(player.transform.position.x+Random.Range(0, 2f)*x+player_sword_distance*x*zero_or_one_x,player.transform.position.y,player.transform.position.z+Random.Range(0, 2f)*z+player_sword_distance*z*zero_or_one_z), Quaternion.Euler(0f,Random.Range(0f, 360f),0f));
+            audiosource.PlayOneShot(weapon_audio);
             yield return waitForDuring_time;
         }
     }
@@ -87,6 +91,7 @@ public class spawn_Sword5 : MonoBehaviour
     }
     void Start()
     {
+        audiosource = GetComponent<AudioSource>();
         sword5_0 = StartCoroutine(sword5_spawn(Sword5Prefab));
         StartCoroutine(level_skill());
     }

@@ -7,7 +7,6 @@ public class shooting_Sword6 : MonoBehaviour
     public float sword6_speed = 30;
     WaitForSeconds WaitForS;
     public spawn_Sword6 scriptSword6;
-    public int damage = 3;//暫定
 
     IEnumerator Destroy_Sword5(){
         yield return WaitForS;

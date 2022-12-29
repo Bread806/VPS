@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class spawn_Sword6 : MonoBehaviour
 {
     public GameObject player;
     public GameObject[] s6_Type = new GameObject [5];
     public int level = 0;
+    public AudioClip weapon_audio;
+    AudioSource audiosource;
     int target_level = 5;
-    static float player_sword_distance = 3.5f;
+    static float player_sword_distance = 1.5f;
     float u_or_d = 1f;
     float sword6_count;
     float sword6_rotate = 270f;
     float direction = 1;
     float spawn_time = 0.2f;
-    float during_time = 3f;
+    public float during_time = 3f;
     public bool newSpeed = false;
     WaitForSeconds WaitForSpawn_time, WaitForDuring_time;
     WaitUntil wait_level;
@@ -31,7 +34,7 @@ public class spawn_Sword6 : MonoBehaviour
                     direction = 1;
                     sword6_rotate = 270f;
                 }
-                
+                audiosource.PlayOneShot(weapon_audio);
                 PoolManager.Release(s6_Type[i], new Vector3(player.transform.position.x+player_sword_distance*direction,player.transform.position.y,player.transform.position.z+0.6f*u_or_d),Quaternion.Euler(0f,sword6_rotate,0f)).GetComponent<shooting_Sword6>().scriptSword6 = this;
                 u_or_d *= -1;
                 yield return WaitForSpawn_time;
@@ -55,10 +58,10 @@ public class spawn_Sword6 : MonoBehaviour
         yield return wait_level;
         during_time = 0f;
         WaitForDuring_time = new WaitForSeconds(during_time);
-        // yield return new WaitUntil( () => playspeed.level == 8);
-        // spawn_time = 0.1f;
-        // WaitForSpawn_time = new WaitForSeconds(spawn_time);
-        // newSpeed = true;
+        yield return new WaitUntil( () => player.GetComponent<PlayerControl>().speed == 10 && level == 8);
+        spawn_time = 0.1f;
+        WaitForSpawn_time = new WaitForSeconds(spawn_time);
+        newSpeed = true;
         
         
     }
@@ -69,6 +72,7 @@ public class spawn_Sword6 : MonoBehaviour
     }
     void Start()
     {
+        audiosource = GetComponent<AudioSource>();
         StartCoroutine(sword6_spawn());
         StartCoroutine(level_skill());
     }

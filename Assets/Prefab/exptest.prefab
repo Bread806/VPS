@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6978548028542613904}
   - component: {fileID: -3047176188729238190}
   - component: {fileID: 3094250561440228042}
+  - component: {fileID: -7314347209593015175}
   m_Layer: 0
   m_Name: exptest
   m_TagString: exptest
@@ -30,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 6978548028542613919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.4917498, y: 0.5, z: -3.1202002}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,7 +98,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-3047176188729238190
 Rigidbody:
@@ -127,3 +128,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ff76da15b4f9844ad73634aa52663b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7314347209593015175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6978548028542613919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d4f88669c1b6748ada94314dd7aebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  movementSpeed: 0.01
