@@ -10,6 +10,7 @@ public class GameContoll : MonoBehaviour
 
     private GameObject backpack;         //背包
     private float currentTime;           //遊戲時間
+    private GameObject player;
     private GameObject playerInterface;  //遊戲中玩家狀態
     private GameObject weaponBackground; //升級武器背景
     private GameObject gameOver;
@@ -18,6 +19,7 @@ public class GameContoll : MonoBehaviour
     private SwordDescribe swordDescribe = new SwordDescribe(); //武器描述
     private TMP_Text[] itemText = new TMP_Text[3];
     private TMP_Text soundText;
+    private TMP_Text killResult;
     public Sprite[] weaponImageList = new Sprite[6];
     private Image[] LVUPImageList = new Image[3];
     private Button[] buttonList = new Button[3];
@@ -38,6 +40,7 @@ public class GameContoll : MonoBehaviour
         for (int i=0; i<LVUPImageList.Length; i++)
             LVUPImageList[i] = GetComponent<Image>();
         soundText = GetComponent<TMP_Text>();
+        killResult= GetComponent<TMP_Text>();
     }
     void Start()
     {
@@ -151,10 +154,18 @@ public class GameContoll : MonoBehaviour
     private void init_gameobj()
     {
         backpack = GameObject.Find("Backpack");
+        player   = GameObject.Find("player");
         playerInterface = GameObject.Find("PlayInterface");
         weaponBackground = GameObject.Find("WeaponBackground");
-        weaponList = GameObject.FindGameObjectsWithTag("Sword");
+        //weaponList = GameObject.FindGameObjectsWithTag("Sword");
+        weaponList[0] = GameObject.Find("spawn_Sword1");
+        weaponList[1] = GameObject.Find("spawn_Sword2");
+        weaponList[2] = GameObject.Find("spawn_Sword3");
+        weaponList[3] = GameObject.Find("spawn_Sword4");
+        weaponList[4] = GameObject.Find("spawn_Sword5");
+        weaponList[5] = GameObject.Find("spawn_Sword6");
         buttonBackround = GameObject.Find("ButtonBackground");
+        killResult = GameObject.Find("KillResult").GetComponent<TMP_Text>();
         gameOver = GameObject.Find("Gameover");
         soundText = GameObject.Find("SoundText").GetComponent<TMP_Text>();
         audioManager = GameObject.FindObjectOfType<AudioManager>();
@@ -190,6 +201,7 @@ public class GameContoll : MonoBehaviour
 
     public void end_game(){
         gameOver.SetActive(true);
+        killResult.text = "You kill : " + player.GetComponent<PlayerState>().get_current_kill().ToString() + " enemies.";
         Time.timeScale = 0f;
         gameIsPause = true;
     }

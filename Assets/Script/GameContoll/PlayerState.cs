@@ -12,6 +12,7 @@ public class PlayerState : MonoBehaviour
     public bool isLevelUP;
     public int playerMaxHP = 100, currentHP = 0;
     public int playerEXP = 0, currentEXP = 0, maxEXP = 100;
+    public int kill=0;
     // Start is called before the first frame update
 
     void Awake(){}
@@ -86,6 +87,14 @@ public class PlayerState : MonoBehaviour
 
     public void level_up_state_update(){
         isLevelUP = !isLevelUP;
+    }
+    
+    public void add_kill(){
+        this.kill++;
+    }
+
+    public int get_current_kill(){
+        return this.kill;
     }
     
     

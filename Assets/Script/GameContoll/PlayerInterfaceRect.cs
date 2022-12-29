@@ -10,7 +10,7 @@ public class PlayerInterfaceRect : MonoBehaviour
 
 {
 
-    public TMP_Text gameTime;
+    public TMP_Text gameTime, gameKill;
     private int m=0,s=0,ct;
 
     public HealBar healBar;
@@ -21,11 +21,13 @@ public class PlayerInterfaceRect : MonoBehaviour
         expBar =  GetComponent<EXPBar>();
         player =  GetComponent<PlayerState>();
         gameTime = GetComponent<TMP_Text>();
+        gameKill = GetComponent<TMP_Text>();
     }
     // Start is called before the first frame update
     void Start()
     {
         gameTime = GameObject.Find("Time").GetComponent<TMP_Text>();
+        gameKill = GameObject.Find("KillNumber").GetComponent<TMP_Text>();
         healBar= GameObject.Find("HealBar").GetComponent<HealBar>();
         expBar = GameObject.Find("EXPBar").GetComponent<EXPBar>();
         player = GameObject.Find("player").GetComponent<PlayerState>();
@@ -49,6 +51,7 @@ public class PlayerInterfaceRect : MonoBehaviour
         rect_HP();
         rect_EXP();
         show_current_time();
+        show_current_kill();
         //show_EXP();
         //show_HP();
     }
@@ -68,6 +71,9 @@ public class PlayerInterfaceRect : MonoBehaviour
         print (ct);
     }
 
+    void show_current_kill(){
+        gameKill.text = player.get_current_kill().ToString();
+    }
 
 }
 
