@@ -65,10 +65,10 @@ public class spawn_Sword3 : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown("space") && level<8){
-            level+=1;
-            Debug.Log(level);
-        }
+        // if(Input.GetKeyDown("space") && level<8){
+        //     level+=1;
+        //     Debug.Log(level);
+        // }
         Sw3.transform.position = player.transform.position + offset;
         Sw3_R_L.transform.position = player.transform.position + offset;
         Sw3_all.transform.position = player.transform.position + offset;
