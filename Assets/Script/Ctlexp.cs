@@ -8,7 +8,7 @@ public class Ctlexp : MonoBehaviour
     public float movementSpeed = 1;
     void Start()
     {
-
+        player = GameObject.Find("player");
     }
 
     void Update()
