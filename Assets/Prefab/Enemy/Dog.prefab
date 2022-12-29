@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 65449959130551738}
   - component: {fileID: 1374923872934623696}
   - component: {fileID: -1574115071112186211}
+  - component: {fileID: 4384026096669036577}
   m_Layer: 0
   m_Name: Dog
   m_TagString: enemy
@@ -460,6 +461,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+--- !u!114 &4384026096669036577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417258215064542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a546284ff1d5a674d8d4e3ebae9cd7da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 200
+  damage: 15
+  level: 3
+  exp: {fileID: 0}
 --- !u!1 &1451966804129338
 GameObject:
   m_ObjectHideFlags: 0

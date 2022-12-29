@@ -11,15 +11,15 @@ public class PlayerControl : MonoBehaviour
     Vector3 m_Movement;
     Rigidbody m_Rigidbody;
     Quaternion m_Rotation = Quaternion.identity;
-    private int exp;
     Animator anim;
     Rigidbody rb;
+    private PlayerState playerState;
     
     void Start()
     {
         m_Animator = GetComponentInChildren<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
-        exp = 0;
+        playerState = GetComponent<PlayerState>();
     }
 
     void Update()
@@ -36,21 +36,16 @@ public class PlayerControl : MonoBehaviour
         transform.position += m_Movement * speed * (isWalking ? 1f : 0f) * Time.deltaTime;
         transform.LookAt(transform.position + m_Movement);
     }
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.gameObject.CompareTag("exptest"))
-    //     {
-    //         exp += 1;
-    //         Debug.Log(exp);
-    //         other.gameObject.SetActive(false);
-    //     }    
-    // }
-    // void OnTriggerStay(Collider other)
-    // {
-    //     if (other.tag == "enemy")
-    //     {
-    //         Destroy(other.gameObject);
-    //         GameObject.Find("Enemy Spawner").GetComponent<SpawnEnemy>().EnemyDie();
-    //     }
-    // }
+   
+    private void OnTriggerStay(Collider other) {
+         // 吸取經驗值
+        if (other.tag == "exptest" ) {
+            playerState.get_EXP (other.GetComponent<exp>().GetExpValue());
+            Destroy (other.gameObject);
+        }
+        // 受到攻擊
+        if (other.tag == "enemy") {
+            playerState.take_damage (other.GetComponent<EenemyState>().GetEnemyDamage());
+        }
+    }
 }

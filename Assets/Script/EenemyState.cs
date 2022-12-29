@@ -6,10 +6,10 @@ public class EenemyState : MonoBehaviour {
     public int Hp;
     public int damage;
     public int level;
-    public int expValue;
     public GameObject exp;
     // Start is called before the first frame update
     void Start() {
+        exp.GetComponent<exp>().ChangeExpValue (level);
     }
 
     // Update is called once per frame
@@ -20,6 +20,7 @@ public class EenemyState : MonoBehaviour {
             Destroy (this.gameObject);
         }
     }
+    // 被武器攻擊
     void OnTriggerStay(Collider other) {
         // 檢測敵人碰撞
         if (other.tag == "Player") {
@@ -27,7 +28,7 @@ public class EenemyState : MonoBehaviour {
             Hp = 0;
         }
     }
-    void OnCollisionEnter (Collision other) {
-        print (other);
+    public int GetEnemyDamage() {
+        return damage;
     }
 }

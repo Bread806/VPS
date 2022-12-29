@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5424127889953143029}
   - component: {fileID: 5431741776529133311}
   - component: {fileID: 2403628576353846366}
+  - component: {fileID: 7506499275733766819}
   m_Layer: 0
   m_Name: dagger (2)
   m_TagString: Untagged
@@ -96,3 +97,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21eee9660cdbb8e46b67e47286b7eba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sword6_speed: 30
+  scriptSword6: {fileID: 0}
+  damage: 3
+--- !u!136 &7506499275733766819
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420068854701687165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.52
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.02}
