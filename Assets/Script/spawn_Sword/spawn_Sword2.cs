@@ -10,7 +10,7 @@ public class spawn_Sword2 : MonoBehaviour
     public AudioClip weapon_audio;
     AudioSource audiosource;
     public int level = 0;
-    public int damage = 10;//暫定
+    public int damage = 5;//暫定
     int during_time = 5;
     public int target_level = 1;
     static float player_sword_distance = 1f;
@@ -34,16 +34,16 @@ public class spawn_Sword2 : MonoBehaviour
     }
     IEnumerator level_skill(){
         yield return wait_level;
-        damage += 10;
+        damage += 5;
         target_level += 1;
         yield return wait_level;
-        damage += 10;
+        damage += 5;
         target_level += 1;
         yield return wait_level;
-        damage += 10;
+        damage += 5;
         target_level += 1;
         yield return wait_level;
-        damage += 10;
+        damage += 5;
         target_level += 1;
         yield return wait_level;                                                        //持續時間增加
         newDuration = true;
