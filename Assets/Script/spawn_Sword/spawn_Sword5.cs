@@ -95,9 +95,9 @@ public class spawn_Sword5 : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown("space") && level<8){
-            level+=1;
-            Debug.Log(level);
-        }
+        // if(Input.GetKeyDown("space") && level<8){
+        //     level+=1;
+        //     Debug.Log(level);
+        // }
     }
 }

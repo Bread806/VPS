@@ -14,12 +14,14 @@ public class PlayerControl : MonoBehaviour
     Animator anim;
     Rigidbody rb;
     private PlayerState playerState;
-    
+    private bool isHurt;
+    private float cantHurtTime;
     void Start()
     {
         m_Animator = GetComponentInChildren<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
         playerState = GetComponent<PlayerState>();
+        isHurt = false;
     }
 
     void Update()
@@ -40,12 +42,22 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerStay(Collider other) {
          // 吸取經驗值
         if (other.tag == "exptest" ) {
-            playerState.get_EXP (other.GetComponent<exp>().GetExpValue());
+            print (other.GetComponent<Ctlexp>().GetExpValue());
+            playerState.get_EXP (other.GetComponent<Ctlexp>().GetExpValue());
             Destroy (other.gameObject);
         }
         // 受到攻擊
         if (other.tag == "enemy") {
-            playerState.take_damage (other.GetComponent<EenemyState>().GetEnemyDamage());
+            if (!isHurt) {
+                isHurt = true;
+                cantHurtTime = 0.5f;
+                playerState.take_damage (other.GetComponent<EenemyState>().GetEnemyDamage());
+            }
+            cantHurtTime -= Time.deltaTime;
+            if (cantHurtTime <= 0.0f) {
+                isHurt = false;
+            }
+            
         }
     }
 }

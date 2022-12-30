@@ -349,7 +349,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585349779547952}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1.5
@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  speed: 0
 --- !u!114 &2684482003533151740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
-  damage: 5
+  damage: 3
   level: 1
   exp: {fileID: 6978548028542613919, guid: 56ad991a0bdf85d49827778aab2b5f92, type: 3}
 --- !u!1 &1686542506629698

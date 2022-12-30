@@ -7,17 +7,17 @@ public class EenemyState : MonoBehaviour {
     public int Hp;
     public int damage;
     public int level;
-    public GameObject exp;
+    public GameObject expSpawner;
     // Start is called before the first frame update
     void Start() {
-        exp.GetComponent<exp>().ChangeExpValue (level);
+        expSpawner = GameObject.Find ("Exp Spawner");
     }
 
     // Update is called once per frame
     void Update() {
         if (Hp <= 0) {
-            Instantiate (exp, this.transform.position, Quaternion.identity);
-            GameObject.Find ("Enemy Spawner").GetComponent<SpawnEnemy>().EnemyDie();
+            expSpawner.GetComponent<ExpSpawn>().CreatExp (this.transform.position, level);
+            GameObject.Find ("Enemy Spawner").GetComponent<EnemySpawn>().EnemyDie();
             Destroy (this.gameObject);
         }
     }

@@ -23,6 +23,5 @@ public class sword_state : MonoBehaviour
             damage = scriptSword3.damage;
         if(scriptSword4 != null && scriptSword4.damage1Change)
             damage = 5;
-        
     }
 }

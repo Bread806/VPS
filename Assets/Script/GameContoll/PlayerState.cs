@@ -12,6 +12,7 @@ public class PlayerState : MonoBehaviour
     public bool isLevelUP;
     public int playerMaxHP = 100, currentHP = 0;
     public int playerEXP = 0, currentEXP = 0, maxEXP = 100;
+    public int kill=0;
     // Start is called before the first frame update
 
     void Awake(){}
@@ -29,20 +30,21 @@ public class PlayerState : MonoBehaviour
     void Update()
     {
         //isLevelUP = false;
-        if (Input.GetKeyUp(KeyCode.K)){
-            get_EXP(50);
+        // if (Input.GetKeyUp(KeyCode.K)){
+        //     get_EXP(50);
             
-        }
+        // }
 
-        if (Input.GetKeyUp(KeyCode.T)){
-            take_damage(10);
-        }
+        // if (Input.GetKeyUp(KeyCode.T)){
+        //     take_damage(10);
+        // }
 
         if (currentEXP >= maxEXP){
+            exp_set_empty(); 
             GS.GetComponent<GameContoll>().LV_UP();
-            exp_set_empty();   
-            exp_increase(100);
             level_up_state_update();
+            exp_increase(100);
+            
             
         }
 
@@ -85,6 +87,14 @@ public class PlayerState : MonoBehaviour
 
     public void level_up_state_update(){
         isLevelUP = !isLevelUP;
+    }
+    
+    public void add_kill(){
+        this.kill++;
+    }
+
+    public int get_current_kill(){
+        return this.kill;
     }
     
     

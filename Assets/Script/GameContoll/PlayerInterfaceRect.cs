@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 
 public class PlayerInterfaceRect : MonoBehaviour
 
 {
 
-    public TMP_Text BPHPText;
-
-    public TMP_Text BPEXPText;
+    public TMP_Text gameTime, gameKill;
+    private int m=0,s=0,ct;
 
     public HealBar healBar;
     public EXPBar expBar;
@@ -20,14 +20,14 @@ public class PlayerInterfaceRect : MonoBehaviour
         healBar = GetComponent<HealBar>();
         expBar =  GetComponent<EXPBar>();
         player =  GetComponent<PlayerState>();
-        //BPEXPText = GetComponent<TMP_Text>();
-        //BPHPText = GetComponent<TMP_Text>();
+        gameTime = GetComponent<TMP_Text>();
+        gameKill = GetComponent<TMP_Text>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        //BPHPText = GameObject.Find("BHPText").GetComponent<TMP_Text>();
-        //BPEXPText = GameObject.Find("BEXPText").GetComponent<TMP_Text>();
+        gameTime = GameObject.Find("Time").GetComponent<TMP_Text>();
+        gameKill = GameObject.Find("KillNumber").GetComponent<TMP_Text>();
         healBar= GameObject.Find("HealBar").GetComponent<HealBar>();
         expBar = GameObject.Find("EXPBar").GetComponent<EXPBar>();
         player = GameObject.Find("player").GetComponent<PlayerState>();
@@ -50,6 +50,8 @@ public class PlayerInterfaceRect : MonoBehaviour
         }
         rect_HP();
         rect_EXP();
+        show_current_time();
+        show_current_kill();
         //show_EXP();
         //show_HP();
     }
@@ -62,14 +64,16 @@ public class PlayerInterfaceRect : MonoBehaviour
         expBar.set_exp(player.current_EXP());
     }
 
-    private void show_EXP(){
-        BPEXPText.text = player.current_EXP().ToString() + " / " + player.max_exp().ToString();
+    void show_current_time(){
+        ct=Convert.ToInt32(FindObjectOfType<GameContoll>().current_time());
+        s = ct % 60; m = ct / 60;
+        gameTime.text = m.ToString() + " : " +s.ToString();
+        print (ct);
     }
 
-    private void show_HP(){
-        BPHPText.text = player.current_HP().ToString();
+    void show_current_kill(){
+        gameKill.text = player.get_current_kill().ToString();
     }
-
 
 }
 
