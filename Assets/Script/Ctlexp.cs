@@ -7,6 +7,7 @@ public class Ctlexp : MonoBehaviour
     public GameObject player;
     public float movementSpeed = 1;
     public int expValue;
+    public int catchExp = 2;
     void Start()
     {
         player = GameObject.Find("player");
@@ -19,7 +20,7 @@ public class Ctlexp : MonoBehaviour
     void Controlexp()
     {
         float sqr = (transform.position - player.transform.position).sqrMagnitude;
-        if (sqr < 3*3)
+        if (sqr < catchExp*catchExp)
             transform.position = Vector3.Lerp(transform.position, player.transform.position, movementSpeed);
     }
     // level 1 -> 10

@@ -9,11 +9,15 @@ public class spawn_Sword1 : MonoBehaviour
     public AudioClip weapon_audio;
     AudioSource audiosource;
     public GameObject Sword1Prefab_Normal;
+    public GameObject sword1_all;
     public int level = 0;
     int start_time;
     int end_time;
     static float player_sword_distance = 1f;
     public GameObject[] s1_Type = new GameObject [7];
+    GameObject Sw1_All;
+    private Vector3 offset;
+    
     Vector3[] s1_Position = {new Vector3(0f,0f,player_sword_distance), new Vector3(player_sword_distance,0f,player_sword_distance), new Vector3(player_sword_distance,0f,0f), new Vector3(player_sword_distance,0f,-player_sword_distance),
                              new Vector3(0f,0f,-player_sword_distance), new Vector3(-player_sword_distance,0f,-player_sword_distance), new Vector3(-player_sword_distance,0f,0f), new Vector3(-player_sword_distance,0f,player_sword_distance)};
     Quaternion[] s1_Quaternion = {Quaternion.Euler(90f,0f,0f), Quaternion.Euler(90f,45f,0f), Quaternion.Euler(90f,90f,0f), Quaternion.Euler(90f,135f,0f), 
@@ -53,9 +57,15 @@ public class spawn_Sword1 : MonoBehaviour
         StopCoroutine(U_R_D_L);
         StopCoroutine(RU_RD_LU_LD);
         StopCoroutine(all_direction);
-        StartCoroutine(sword1_spawn(0,2,waitForStart_time0,waitForEnd_time0));
-        StartCoroutine(sword1_spawn(1,2,waitForStart_time1,waitForEnd_time0));
-        StartCoroutine(sword1_spawn(0,1,waitForStart_time2,waitForEnd_time0));
+        U_R_D_L = StartCoroutine(sword1_spawn(0,2,waitForStart_time0,waitForEnd_time0));
+        RU_RD_LU_LD = StartCoroutine(sword1_spawn(1,2,waitForStart_time1,waitForEnd_time0));
+        all_direction = StartCoroutine(sword1_spawn(0,1,waitForStart_time2,waitForEnd_time0));
+        yield return new WaitUntil( () => player.GetComponent<Ctlexp>().catchExp == 5 && level == 8);
+        StopCoroutine(U_R_D_L);
+        StopCoroutine(RU_RD_LU_LD);
+        StopCoroutine(all_direction);
+        Sw1_All = Instantiate(sword1_all, player.transform.position, Quaternion.Euler(0f,0f,0f));
+        offset = Sw1_All.transform.position - player.transform.position;
     }
 
 
@@ -83,5 +93,13 @@ public class spawn_Sword1 : MonoBehaviour
         //     level+=1;
         //     Debug.Log(level);
         // }
+        if(Input.GetKeyDown("space")){
+            StopCoroutine(U_R_D_L);
+            StopCoroutine(RU_RD_LU_LD);
+            StopCoroutine(all_direction);
+            Sw1_All = Instantiate(sword1_all, player.transform.position, Quaternion.Euler(0f,0f,0f));
+            offset = Sw1_All.transform.position - player.transform.position;
+        }
+        Sw1_All.transform.position = player.transform.position + offset;
     } 
 }

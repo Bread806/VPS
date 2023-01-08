@@ -14,7 +14,7 @@ public class spawn_Sword2 : MonoBehaviour
     int during_time = 5;
     public int target_level = 1;
     static float player_sword_distance = 1f;
-    public bool newDuration = false, newScale_big = false;
+    public bool newDuration = false, newScale_big = false, canSuckBlood = false;
 
     Coroutine start_sword2_0,start_sword2_1,start_sword2_2;
     WaitForSeconds waitForDuring_time;
@@ -66,6 +66,8 @@ public class spawn_Sword2 : MonoBehaviour
         target_level += 1;
         yield return wait_level;                                                        //越外圍飛鏢越大
         newScale_big = true;
+        yield return new WaitUntil( () => player.GetComponent<sword_state>().playerAtk == 5 && level == 9);
+        canSuckBlood = true;
     }
     void Awake() {
         damage = 10;
