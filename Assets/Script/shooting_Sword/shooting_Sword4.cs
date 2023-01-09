@@ -10,7 +10,7 @@ public class shooting_Sword4 : MonoBehaviour
         gameObject.SetActive(false);
     }
     void Awake() {
-        WaitForS = new WaitForSeconds(3);
+        WaitForS = new WaitForSeconds(8);
     }
     void OnEnable()
     {

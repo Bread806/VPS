@@ -11,7 +11,7 @@ public class spawn_Sword2 : MonoBehaviour
     AudioSource audiosource;
     public int level = 0;
     public int damage = 5;//暫定
-    int during_time = 5;
+    int during_time = 10;
     public int target_level = 1;
     static float player_sword_distance = 1f;
     public bool newDuration = false, newScale_big = false, canSuckBlood = false;
@@ -49,7 +49,7 @@ public class spawn_Sword2 : MonoBehaviour
         newDuration = true;
         target_level += 1;
         yield return wait_level;                                                        //間格時間縮短
-        during_time = 4;
+        during_time = 8;
         waitForDuring_time = new WaitForSeconds(during_time);
         target_level += 1;
         yield return wait_level;                                                        //多一把飛鏢
@@ -70,7 +70,7 @@ public class spawn_Sword2 : MonoBehaviour
         canSuckBlood = true;
     }
     void Awake() {
-        damage = 10;
+        damage = 5;
         waitForDuring_time = new WaitForSeconds(during_time);
         wait_level = new WaitUntil( () => level == target_level);
     }
