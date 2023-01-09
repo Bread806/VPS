@@ -5,9 +5,9 @@ public class SwordDescribe : MonoBehaviour
 {
     private int level;
     private string[] swordDescribe1 = new string [8];
-    private string[] swordDescribe2 = new string [8];
+    private string[] swordDescribe2 = new string [9];
     private string[] swordDescribe3 = new string [8];
-    private string[] swordDescribe4 = new string [8];
+    private string[] swordDescribe4 = new string [9];
     private string[] swordDescribe5 = new string [8];
     private string[] swordDescribe6 = new string [8];
 
@@ -36,6 +36,7 @@ public class SwordDescribe : MonoBehaviour
         swordDescribe2[5] = "level : 6 \n Fuma Shuriken fight around you, and the summon's cooldown is reduced.";
         swordDescribe2[6] = "level : 7 \n Fuma Shuriken fight around you, and can summon an additional Fuma Shuriken.";
         swordDescribe2[7] = "level : 8 \n Fuma Shuriken fight around you, and can summon an additional Fuma Shuriken.";
+        swordDescribe2[8] = "level : 9 \n powerful Fuma Shuriken is coming right up.";
 
         //S3
         swordDescribe3[0] = "level : 1 \n The black hole will fight for you.";
@@ -56,6 +57,7 @@ public class SwordDescribe : MonoBehaviour
         swordDescribe4[5] = "level : 6 \n There will be iron spike balls falling from the sky, and the cooldown of summoning will be shortened.";
         swordDescribe4[6] = "level : 7 \n There will be iron spike balls falling from the sky, and the cooldown of summoning will be shortened.";
         swordDescribe4[7] = "level : 8 \n Can additionally summon a Mini Spike Ball.";
+        swordDescribe4[8] = "level : 9 \n disaster Spike Ball is coming right up.";
 
         //S5
         swordDescribe5[0] = "level : 1 \n There will be patrolling throwing knives fighting for you.";
