@@ -20,7 +20,7 @@ public class spawn_Sword4 : MonoBehaviour
         while(true){
             float x = Random.value < 0.5f ? -1f : 1f;
             float z = Random.value < 0.5f ? -1f : 1f;
-            for(int i=0;i<10;i++)
+            for(int i=0;i<20;i++)
                 PoolManager.Release(s4_Type, new Vector3(player.transform.position.x+Random.Range(3f, 6f)*x,player.transform.position.y + sword4High,player.transform.position.z+Random.Range(3f, 6f)*z),Quaternion.Euler(Random.Range(0f, 360f),Random.Range(0f, 360f),Random.Range(0f, 360f)));
             yield return waitForDuring_time;
         }

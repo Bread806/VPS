@@ -5,14 +5,14 @@ using UnityEngine;
 public class shooting_Sword2 : MonoBehaviour
 {
     float sword2_speed = 10;
-    public float duration = 50, scale_big = 0;
+    public float duration = 30, scale_big = 0;
     Vector3 sword2_scale, originalScale = new Vector3(10f,10f,10f);
     public spawn_Sword2 scriptSword2;
 
     void Update()
     {
         if(scriptSword2 != null && scriptSword2.newDuration)
-            duration = 60;
+            duration = 40;
         if(scriptSword2 != null && scriptSword2.newScale_big)
             scale_big = 0.01f;
         //Debug.Log(duration);
