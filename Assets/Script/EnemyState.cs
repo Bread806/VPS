@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EenemyState : MonoBehaviour {
+public class EnemyState : MonoBehaviour {
     public int Hp;
     public int damage;
     public int level;
@@ -26,5 +26,8 @@ public class EenemyState : MonoBehaviour {
     }
     public void HurtDamage (int damage) {
         Hp -= damage;
+    }
+    public int GetEnemyHp() {
+        return Hp;
     }
 }

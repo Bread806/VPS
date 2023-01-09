@@ -66,9 +66,7 @@ public class EnemySpawn : MonoBehaviour {
             LevelUp();
         }
         gamingTime += Time.deltaTime;
-        //print (gamingTime);
         if (level < 10 && gamingTime >= timeToNextLevel * (level+1)) {
-            print (gamingTime);
             LevelUp();
         }
         StartCoroutine (Spawn());
@@ -96,7 +94,7 @@ public class EnemySpawn : MonoBehaviour {
         level++;
         ChangeSpawnList (level);
         enemyTotal += 5;
-        Debug.LogFormat ("[{0}]", string.Join(", ", spawnList));
+        // Debug.LogFormat ("[{0}]", string.Join(", ", spawnList));
     }
     // 改變怪物強度比例
     private void ChangeSpawnList (int level) {

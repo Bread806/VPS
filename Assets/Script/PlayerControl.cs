@@ -42,16 +42,17 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerStay(Collider other) {
          // 吸取經驗值
         if (other.tag == "exptest" ) {
-            print (other.GetComponent<Ctlexp>().GetExpValue());
+            print ("get " + other.GetComponent<Ctlexp>().GetExpValue() + " exp");
             playerState.get_EXP (other.GetComponent<Ctlexp>().GetExpValue());
             Destroy (other.gameObject);
+            
         }
         // 受到攻擊
         if (other.tag == "enemy") {
             if (!isHurt) {
                 isHurt = true;
                 cantHurtTime = 0.5f;
-                playerState.take_damage (other.GetComponent<EenemyState>().GetEnemyDamage());
+                playerState.take_damage (other.GetComponent<EnemyState>().GetEnemyDamage());
             }
             cantHurtTime -= Time.deltaTime;
             if (cantHurtTime <= 0.0f) {

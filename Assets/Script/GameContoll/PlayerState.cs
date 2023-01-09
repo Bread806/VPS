@@ -30,10 +30,10 @@ public class PlayerState : MonoBehaviour
     void Update()
     {
         //isLevelUP = false;
-        // if (Input.GetKeyUp(KeyCode.K)){
-        //     get_EXP(50);
+        if (Input.GetKeyUp(KeyCode.K)){
+            get_EXP(50);
             
-        // }
+        }
 
         // if (Input.GetKeyUp(KeyCode.T)){
         //     take_damage(10);
@@ -55,6 +55,7 @@ public class PlayerState : MonoBehaviour
 
     public void take_damage(int damage){
         currentHP -= damage;
+        print ("take damage, currenHp  = " + currentHP);
     }
 
     public void get_EXP(int expNumber){
@@ -96,7 +97,8 @@ public class PlayerState : MonoBehaviour
     public int get_current_kill(){
         return this.kill;
     }
-    
-    
-
+    public void HealHp(int heal) {
+        currentHP = Mathf.Min (playerMaxHP, currentHP+heal);
+        print ("heal, currenHp  = " + currentHP);
+    }
 }

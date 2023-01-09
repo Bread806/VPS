@@ -473,4 +473,4 @@ MonoBehaviour:
   Hp: 150
   damage: 5
   level: 2
-  exp: {fileID: 6978548028542613919, guid: 56ad991a0bdf85d49827778aab2b5f92, type: 3}
+  expSpawner: {fileID: 0}

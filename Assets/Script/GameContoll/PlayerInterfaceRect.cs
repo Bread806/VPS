@@ -68,7 +68,6 @@ public class PlayerInterfaceRect : MonoBehaviour
         ct=Convert.ToInt32(FindObjectOfType<GameContoll>().current_time());
         s = ct % 60; m = ct / 60;
         gameTime.text = m.ToString() + " : " +s.ToString();
-        print (ct);
     }
 
     void show_current_kill(){

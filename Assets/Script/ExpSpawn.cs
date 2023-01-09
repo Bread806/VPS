@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ExpSpawn : MonoBehaviour {
-    public GameObject exp;
+    public GameObject[] exp;
     // Start is called before the first frame update
-    void Start() {
-        
+    void Start() { 
     }
 
     // Update is called once per frame
@@ -14,7 +13,6 @@ public class ExpSpawn : MonoBehaviour {
         
     }
     public void CreatExp (Vector3 position, int level) {
-        Instantiate (exp, position, Quaternion.identity);
-        exp.GetComponent<Ctlexp>().ChangeExpValue (level);
+        Instantiate (exp[level - 1], position, Quaternion.identity);
     }
 }

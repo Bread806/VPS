@@ -78,7 +78,6 @@ public class GameContoll : MonoBehaviour
         }
 
         currentTime += Time.deltaTime;
-        //print (currentTime);
     }
 
     public void pause()

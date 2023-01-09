@@ -10,7 +10,8 @@ public class EnemyAction : MonoBehaviour {
     public float speed;
     private NavMeshAgent agent;
     private Animator animator;
-    private EenemyState enemyState;
+    private EnemyState enemyState;
+    private spawn_Sword2 spawnSword2;
     
 
     // Start is called before the first frame update
@@ -18,7 +19,8 @@ public class EnemyAction : MonoBehaviour {
         player = GameObject.Find ("player");
         agent = this.GetComponent<NavMeshAgent>();
         animator = this.GetComponent<Animator>();
-        enemyState = this.GetComponent<EenemyState>();
+        enemyState = this.GetComponent<EnemyState>();
+        spawnSword2 = GameObject.Find ("spawn_Sword2").GetComponent<spawn_Sword2>();
         speed = 1.5f;
     }
 
@@ -39,8 +41,12 @@ public class EnemyAction : MonoBehaviour {
      // 被武器攻擊
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Sword") {
-            print ("hit enemy");
             enemyState.HurtDamage (other.GetComponent<sword_state>().damage);
+            // 觸發吸血
+            if (other.name == "Shuriken3(Clone)" && enemyState.GetEnemyHp() <= 0 && spawnSword2.canSuckBlood) {
+                player.GetComponent<PlayerState>().HealHp(1);
+                print ("heal 1 hp");
+            }
         }
     }
 }
