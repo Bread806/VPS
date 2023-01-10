@@ -16,14 +16,14 @@ public class EnemySpawn : MonoBehaviour {
     public int timeToNextLevel;
     // 增加怪物數量
     public int incrementEnemy;
-    // 玩家X座標最小距離
-    public int relativePlayerMinX;
-    // 玩家X座標最大距離
-    public int relativePlayerMaxX;
-    // 玩家Z座標最小距離
-    public int relativePlayerMinZ;
-    // 玩家Z座標最大距離
-    public int relativePlayerMaxZ;
+    // 距離玩家X座標最小值
+    public float distancePlayerMinX;
+    // 距離玩家X座標最大值
+    public float distancePlayerMaxX;
+    // 距離玩家Z座標最小值
+    public float distancePlayerMinZ;
+    // 距離玩家Z座標最大值
+    public float distancePlayerMaxZ;
     public Vector3 enemyPosition;
     // 生怪冷卻時間
     private float waitToSpawn;
@@ -32,7 +32,8 @@ public class EnemySpawn : MonoBehaviour {
     // row為難度level, column為怪物level, 值為比例, ex: [4,2]:難度level4中level2怪的比例
     private int[,] spawnProbability;
     private int[] spawnList;
-
+    private float cameraWidth;
+    private float cameraHeight;
                         
 
 
@@ -44,10 +45,10 @@ public class EnemySpawn : MonoBehaviour {
         level = 0;
         timeToNextLevel = 30;
         incrementEnemy = 5;
-        relativePlayerMinX = 10;
-        relativePlayerMaxX = 20;
-        relativePlayerMinZ = 20;
-        relativePlayerMaxZ = 30;
+        distancePlayerMinX = 0.0f;
+        distancePlayerMaxX = 35.0f;
+        distancePlayerMinZ = 0.0f;
+        distancePlayerMaxZ = 30.0f;
         waitToSpawn = 1.0f;
         gamingTime = 0.0f;
         spawnProbability = new int[11,4]{ {10, 0, 0, 0}, 
@@ -58,6 +59,8 @@ public class EnemySpawn : MonoBehaviour {
                                           { 0, 4, 4, 2}, {0, 3, 4, 3}
                                         };
         spawnList = new int[10]{0,0,0,0,0,0,0,0,0,0};
+        cameraWidth = 60.0f;
+        cameraHeight = 50.0f;
     }
 
     // Update is called once per frame
@@ -86,9 +89,17 @@ public class EnemySpawn : MonoBehaviour {
     private void RandomEnemyPosition() {
         int directionX = (int)Mathf.Sign (Random.Range (-1.0f, 1.0f));
         int directionZ = (int)Mathf.Sign (Random.Range (-1.0f, 1.0f));
-        enemyPosition = new Vector3 (player.transform.position.x + (Random.Range (relativePlayerMinX, relativePlayerMaxX) * directionX),
+        float enemyDistanceZ = Random.Range (distancePlayerMinZ, distancePlayerMaxZ);
+        if (enemyDistanceZ <= cameraHeight / 2) {
+            distancePlayerMinX = cameraWidth / 2;
+        }
+        else {
+            distancePlayerMinX = 0.0f;    
+        }
+        float enemyDistanceX = Random.Range (distancePlayerMinX, distancePlayerMaxX);
+        enemyPosition = new Vector3 (player.transform.position.x + (enemyDistanceX * directionX),
                                      player.transform.position.y,
-                                     player.transform.position.z + (Random.Range (relativePlayerMinZ, relativePlayerMaxZ) * directionZ));    
+                                     player.transform.position.z + (enemyDistanceZ * directionZ));    
     }
     private void LevelUp() {
         level++;

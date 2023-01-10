@@ -1796,10 +1796,10 @@ MonoBehaviour:
   level: 0
   timeToNextLevel: 0
   incrementEnemy: 0
-  relativePlayerMinX: 0
-  relativePlayerMaxX: 0
-  relativePlayerMinZ: 0
-  relativePlayerMaxZ: 0
+  distancePlayerMinX: 0
+  distancePlayerMaxX: 0
+  distancePlayerMinZ: 0
+  distancePlayerMaxZ: 0
   enemyPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &692364827
 Transform:
