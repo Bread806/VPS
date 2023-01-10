@@ -6,7 +6,7 @@ public class Ctlexp : MonoBehaviour
 {
     public GameObject player;
     public float movementSpeed = 1;
-    public int expValue = 0;
+    public int expValue;
     public int catchExp = 2;
     void Start()
     {
