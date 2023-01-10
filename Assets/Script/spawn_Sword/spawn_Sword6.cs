@@ -24,21 +24,28 @@ public class spawn_Sword6 : MonoBehaviour
 
     IEnumerator sword6_spawn(){
         while(true){
-            sword6_count = (level+1) > 5 ? 5 : level+1;
-            for(int i=0;i<sword6_count;i++){
-                if(180f<player.transform.eulerAngles.y && player.transform.eulerAngles.y<360f){
-                    direction = -1;
-                    sword6_rotate = 90f;
-                }
-                if(0f<player.transform.eulerAngles.y && player.transform.eulerAngles.y<180f){
-                    direction = 1;
-                    sword6_rotate = 270f;
-                }
+            if(180f<player.transform.eulerAngles.y && player.transform.eulerAngles.y<360f){
+                direction = -1;
+                sword6_rotate = 90f;
+            }
+            if(0f<player.transform.eulerAngles.y && player.transform.eulerAngles.y<180f){
+                direction = 1;
+                sword6_rotate = 270f;
+            }
+            if(level==0){
                 audiosource.PlayOneShot(weapon_audio);
-                PoolManager.Release(s6_Type[i], new Vector3(player.transform.position.x+player_sword_distance*direction,player.transform.position.y,player.transform.position.z+0.6f*u_or_d),Quaternion.Euler(0f,sword6_rotate,0f)).GetComponent<shooting_Sword6>().scriptSword6 = this;
-                u_or_d *= -1;
+                PoolManager.Release(s6_Type[0], new Vector3(player.transform.position.x+player_sword_distance*direction,player.transform.position.y,player.transform.position.z),Quaternion.Euler(0f,sword6_rotate,0f)).GetComponent<shooting_Sword6>().scriptSword6 = this;
                 yield return WaitForSpawn_time;
-            }   
+            }
+            else{    
+                sword6_count = (level+1) > 5 ? 5 : level+1;
+                for(int i=0;i<sword6_count;i++){
+                    audiosource.PlayOneShot(weapon_audio);
+                    PoolManager.Release(s6_Type[i], new Vector3(player.transform.position.x+player_sword_distance*direction,player.transform.position.y,player.transform.position.z+0.6f*u_or_d),Quaternion.Euler(0f,sword6_rotate,0f)).GetComponent<shooting_Sword6>().scriptSword6 = this;
+                    u_or_d *= -1;
+                    yield return WaitForSpawn_time;
+                }  
+            } 
             yield return WaitForDuring_time;
         }
     }
@@ -79,9 +86,9 @@ public class spawn_Sword6 : MonoBehaviour
 
     void Update()
     {
-        // if(Input.GetKeyDown("space") && level<8){
-        //     level+=1;
-        //     Debug.Log(level);
-        // }
+        if(Input.GetKeyDown("space") && level<8){
+            level+=1;
+            Debug.Log(level);
+        }
     }
 }

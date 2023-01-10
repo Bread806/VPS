@@ -93,13 +93,13 @@ public class spawn_Sword1 : MonoBehaviour
         //     level+=1;
         //     Debug.Log(level);
         // }
-        if(Input.GetKeyDown("space")){
-            StopCoroutine(U_R_D_L);
-            StopCoroutine(RU_RD_LU_LD);
-            StopCoroutine(all_direction);
-            Sw1_All = Instantiate(sword1_all, player.transform.position, Quaternion.Euler(0f,0f,0f)) as GameObject;
-            offset = Sw1_All.transform.position - player.transform.position;
-        }
+        // if(Input.GetKeyDown("space")){
+        //     StopCoroutine(U_R_D_L);
+        //     StopCoroutine(RU_RD_LU_LD);
+        //     StopCoroutine(all_direction);
+        //     Sw1_All = Instantiate(sword1_all, player.transform.position, Quaternion.Euler(0f,0f,0f)) as GameObject;
+        //     offset = Sw1_All.transform.position - player.transform.position;
+        // }
         if(Sw1_All != null)
             Sw1_All.transform.position = player.transform.position + offset;
     } 

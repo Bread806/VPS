@@ -71610,7 +71610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64cdceed174339a4987fda37a8b9f540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 30
+  playerAtk: 0
   scriptSword2: {fileID: 0}
   scriptSword3: {fileID: 0}
   scriptSword4: {fileID: 0}

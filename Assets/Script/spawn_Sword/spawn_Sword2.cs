@@ -10,7 +10,7 @@ public class spawn_Sword2 : MonoBehaviour
     public AudioClip weapon_audio;
     AudioSource audiosource;
     public int level = 0;
-    public int damage = 5;//暫定
+    public int damage = 10;//暫定
     int during_time = 10;
     public int target_level = 1;
     static float player_sword_distance = 1f;
