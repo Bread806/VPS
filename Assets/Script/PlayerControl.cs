@@ -37,7 +37,8 @@ public class PlayerControl : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("isWalking", isWalking);
         transform.position += m_Movement * speed * (isWalking ? 1f : 0f) * Time.deltaTime;
-        transform.LookAt(transform.position + m_Movement);
+        if(!(Input.GetKey("space")))
+            transform.LookAt(transform.position + m_Movement);
     }
     
     private void OnTriggerStay(Collider other) {
