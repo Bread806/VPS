@@ -60,7 +60,7 @@ public class spawn_Sword1 : MonoBehaviour
         U_R_D_L = StartCoroutine(sword1_spawn(0,2,waitForStart_time0,waitForEnd_time0));
         RU_RD_LU_LD = StartCoroutine(sword1_spawn(1,2,waitForStart_time1,waitForEnd_time0));
         all_direction = StartCoroutine(sword1_spawn(0,1,waitForStart_time2,waitForEnd_time0));
-        yield return new WaitUntil( () => player.GetComponent<Ctlexp>().catchExp == 5 && level == 8);
+        yield return new WaitUntil( () => player.GetComponent<PlayerControl>().catchExp == 5 && level == 8);
         StopCoroutine(U_R_D_L);
         StopCoroutine(RU_RD_LU_LD);
         StopCoroutine(all_direction);

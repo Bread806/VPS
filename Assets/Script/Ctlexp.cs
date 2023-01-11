@@ -7,10 +7,11 @@ public class Ctlexp : MonoBehaviour
     public GameObject player;
     public float movementSpeed = 1;
     public int expValue;
-    public int catchExp = 2;
+    private int playerCatchExp;
     void Start()
     {
         player = GameObject.Find("player");
+        playerCatchExp = player.GetComponent<PlayerControl>().catchExp;
     }
 
     void Update()
@@ -20,7 +21,7 @@ public class Ctlexp : MonoBehaviour
     void Controlexp()
     {
         float sqr = (transform.position - player.transform.position).sqrMagnitude;
-        if (sqr < catchExp*catchExp)
+        if (sqr < playerCatchExp * playerCatchExp)
             transform.position = Vector3.Lerp(transform.position, player.transform.position, movementSpeed);
     }
     public int GetExpValue() {

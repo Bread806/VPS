@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
 {
     public float turnSpeed = 20f;
     public float speed = 3;
+    public int catchExp = 2;
     Animator m_Animator;
     Vector3 m_Movement;
     Rigidbody m_Rigidbody;
@@ -38,7 +39,7 @@ public class PlayerControl : MonoBehaviour
         transform.position += m_Movement * speed * (isWalking ? 1f : 0f) * Time.deltaTime;
         transform.LookAt(transform.position + m_Movement);
     }
-   
+    
     private void OnTriggerStay(Collider other) {
          // 吸取經驗值
         if (other.tag == "exptest" ) {
