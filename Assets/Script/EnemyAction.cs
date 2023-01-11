@@ -41,7 +41,9 @@ public class EnemyAction : MonoBehaviour {
      // 被武器攻擊
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Sword") {
-            enemyState.HurtDamage (other.GetComponent<sword_state>().damage);
+            int swordDamage = other.GetComponent<sword_state>().damage;
+            enemyState.HurtDamage (swordDamage);
+            DamagePopup.Creat (this.transform.position, swordDamage);
             // 觸發吸血
             if (other.name == "Shuriken3(Clone)" && enemyState.GetEnemyHp() <= 0 && spawnSword2.canSuckBlood) {
                 player.GetComponent<PlayerState>().HealHp(1);
